@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>日本之旅 12/7–12/13 · 大阪 · 箱根 · 东京</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFBF4; --card:#FFFFFF; --ink:#2B2A33; --ink-2:#6B6A75; --rule:#EFE6DA;
+  --osaka:#FF6B3D; --osaka-soft:#FFE8DE; --osaka-deep:#C84A1F;
+  --hakone:#1FA37A; --hakone-soft:#DCF5EA; --hakone-deep:#157A5A;
+  --tokyo:#5B6CFF; --tokyo-soft:#E7EAFF; --tokyo-deep:#3C48C9;
+  --gold:#F6B73C; --gold-soft:#FFF3D6;
+  --pink:#F0557F; --pink-soft:#FFE4EC;
+  --sky:#7CD3F7;
+  --shadow:0 6px 20px rgba(80,50,20,.08);
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:light;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:light;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 62px);height:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px 72px}
+.display{font-family:"Zen Maru Gothic","Noto Sans SC","PingFang SC",sans-serif;font-weight:900}
+
+/* hero */
+.hero{margin:14px 0 0;padding:34px 24px 26px;border-radius:28px;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#FF6B3D 0%,#FF9A5C 35%,#F6B73C 62%,#7CD3F7 100%)}
+.hero::after{content:"";position:absolute;right:-40px;top:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.22)}
+.hero::before{content:"";position:absolute;left:-30px;bottom:-70px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.16)}
+.hero .kicker{margin:0 0 6px;font-size:14px;opacity:.95;position:relative}
+.hero h1{margin:0 0 18px;font-size:42px;line-height:1.1;letter-spacing:.02em;position:relative;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+.cities{display:flex;gap:8px;margin:0;padding:0;list-style:none;position:relative}
+.cities li{flex:1;background:rgba(255,255,255,.92);color:var(--ink);border-radius:16px;padding:10px 6px;text-align:center}
+.cities b{display:block;font-size:22px;line-height:1.1}
+.cities span{font-size:12px;color:#6B6A75}
+.cities .o b{color:#C84A1F}.cities .h b{color:#157A5A}.cities .t b{color:#3C48C9}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:18px -16px 0;padding:10px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:none;text-decoration:none;font-size:14px;font-weight:500;padding:7px 14px;border-radius:999px;background:var(--card);box-shadow:var(--shadow);white-space:nowrap;color:var(--ink)}
+.nav a.o{color:var(--osaka-deep);background:var(--osaka-soft)}
+.nav a.h{color:var(--hakone-deep);background:var(--hakone-soft)}
+.nav a.t{color:var(--tokyo-deep);background:var(--tokyo-soft)}
+.nav a:focus-visible{outline:2px solid var(--tokyo);outline-offset:2px}
+
+h2{font-size:28px;margin:44px 0 16px;display:flex;align-items:center;gap:10px}
+h2 .emoji{font-size:30px}
+p{margin:0 0 10px}
+.muted{color:var(--ink-2);font-size:14px}
+
+/* cards */
+.card{background:var(--card);border-radius:22px;padding:18px 20px;margin:0 0 14px;box-shadow:var(--shadow);border-top:6px solid var(--rule)}
+.card.o{border-top-color:var(--osaka)}.card.h{border-top-color:var(--hakone)}.card.t{border-top-color:var(--tokyo)}.card.g{border-top-color:var(--gold)}
+.card h3{margin:0 0 4px;font-size:19px}
+.card .dates{font-weight:500;margin-bottom:10px;font-size:15px}
+.card.o .dates{color:var(--osaka-deep)}.card.h .dates{color:var(--hakone-deep)}.card.t .dates{color:var(--tokyo-deep)}
+.kv{display:grid;grid-template-columns:5.2em 1fr;gap:5px 12px;font-size:15px;margin:6px 0 0}
+.kv dt{color:var(--ink-2);margin:0}
+.kv dd{margin:0;word-break:break-word}
+
+/* day */
+.day{margin-top:30px;border-radius:24px;background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+.day-head{display:flex;align-items:center;gap:14px;padding:16px 20px;color:#fff}
+.day.o .day-head{background:linear-gradient(90deg,var(--osaka),#FF9A5C)}
+.day.h .day-head{background:linear-gradient(90deg,var(--hakone),#5CCFA8)}
+.day.t .day-head{background:linear-gradient(90deg,var(--tokyo),#8E9BFF)}
+.day-head .d{font-size:34px;line-height:1}
+.day-head .w{font-size:13px;opacity:.9;line-height:1.2}
+.day-head .t{margin-left:auto;text-align:right;font-size:18px;font-weight:700}
+.day-body{padding:10px 20px 18px}
+.day-body>.muted{margin:8px 0 4px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:4.4em 1fr;gap:10px;padding:11px 0;position:relative}
+.tl li+li{border-top:1px solid var(--rule)}
+.tl .time{font-variant-numeric:tabular-nums;color:var(--ink-2);font-size:14px;padding-top:3px;font-weight:500}
+.tl .what{font-size:16px}
+.tl .what small{display:block;color:var(--ink-2);font-size:14px;margin-top:3px}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;margin-right:6px;vertical-align:middle}
+.meal{background:var(--gold-soft);color:#9A6A00}
+.tbd{background:var(--pink-soft);color:var(--pink)}
+.plane{background:var(--tokyo-soft);color:var(--tokyo-deep)}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.btn{display:inline-block;text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:999px;border:1.5px solid currentColor}
+.o .btn{color:var(--osaka-deep)}.h .btn{color:var(--hakone-deep)}.t .btn{color:var(--tokyo-deep)}
+.note{background:var(--pink-soft);padding:12px 16px;border-radius:14px;margin:12px 0 4px;font-size:15px}
+.note b{color:var(--pink)}
+
+/* todo */
+.todo{list-style:none;padding:0;margin:0}
+.todo li{display:flex;gap:12px;padding:12px 16px;margin-bottom:10px;background:var(--card);border-radius:16px;box-shadow:var(--shadow);font-size:15px}
+.todo li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border:2px solid var(--pink);border-radius:7px}
+.todo li span{color:var(--ink-2);display:block;font-size:14px}
+
+footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">2026年12月7日 – 13日 · 12人同行</p>
+  <h1 class="display">大阪・箱根・東京<br>冬日之旅 🗾</h1>
+  <ul class="cities">
+    <li class="o"><b class="display">3晚</b><span>大阪 12/7–10</span></li>
+    <li class="h"><b class="display">1晚</b><span>箱根 12/10–11</span></li>
+    <li class="t"><b class="display">2晚</b><span>东京 12/11–13</span></li>
+  </ul>
+</header>
+
+<nav class="nav" aria-label="跳转">
+  <a href="#flights">✈️ 航班</a>
+  <a href="#stay">🏠 住宿</a>
+  <a class="o" href="#d7">12/7</a>
+  <a class="o" href="#d8">12/8</a>
+  <a class="o" href="#d9">12/9</a>
+  <a class="h" href="#d10">12/10</a>
+  <a class="h" href="#d11">12/11</a>
+  <a class="t" href="#d12">12/12</a>
+  <a class="t" href="#d13">12/13</a>
+  <a href="#todo">✅ 待办</a>
+</nav>
+
+<!-- ============ 航班 ============ -->
+<h2 id="flights" class="display"><span class="emoji">✈️</span>航班</h2>
+<p class="muted">12人分两组出发：香港7人、福州5人，12/7 在大阪会合。</p>
+
+<div class="card g">
+  <h3 class="display">香港组 · 7人</h3>
+  <dl class="kv">
+    <dt>去程</dt><dd>12/7 周一 乐桃航空 MM064<br>香港 HKG T1 12:45 → 关西 KIX T2 17:10（3小时25分）</dd>
+    <dt>回程</dt><dd>12/13 周日 香港航空 HX609<br>成田 NRT T1 15:20 → 香港 HKG T1 19:55（5小时35分）<br><span class="muted">5人；香港组另外2人回福州，见下方 MF810</span></dd>
+  </dl>
+</div>
+
+<div class="card g">
+  <h3 class="display">福州组 · 5人</h3>
+  <dl class="kv">
+    <dt>去程 1</dt><dd>12/7 周一 厦门航空 MF809<br>福州长乐 T2 09:30 → 成田 NRT T1 13:40（3小时10分）</dd>
+    <dt>去程 2</dt><dd>12/7 周一 捷星日本 GK213<br>成田 NRT T3 16:55 → 关西 KIX T1 18:40（1小时45分）</dd>
+    <dt>回程</dt><dd>12/13 周日 厦门航空 MF810<br>成田 NRT T1 15:30 → 福州长乐 T2 18:45（4小时15分）<br><span class="muted">7人：福州组5人 + 香港组2人</span></dd>
+  </dl>
+  <div class="note"><b>成田转机提醒：</b>13:40 到成田 T1，16:55 从 T3 起飞。要入境、取行李、从 T1 坐免费接驳巴士到 T3（约10分钟）、重新办捷星值机（起飞前50分钟截止）。时间够但别逗留。</div>
+</div>
+
+<!-- ============ 住宿 ============ -->
+<h2 id="stay" class="display"><span class="emoji">🏠</span>住宿</h2>
+
+<div class="card o">
+  <h3 class="display">大阪 · Airbnb 公寓 × 2</h3>
+  <div class="dates">12/7 周一 16:00 入住 → 12/10 周四 10:00 退房 · 3晚</div>
+  <dl class="kv">
+    <dt>房东</dt><dd>Masayuki（两套公寓同一栋楼，分两个预订）</dd>
+    <dt>地址</dt><dd>大阪市中央区日本橋1丁目4-12 〒542-0073<br><span class="muted">1-chōme-4-12 Nipponbashi, Chuo Ward, Osaka</span></dd>
+    <dt>怎么去</dt><dd>日本橋站 6号出口 步行2分钟；楼下有 7-Eleven。步行5分钟到道顿堀、心斋桥</dd>
+  </dl>
+</div>
+
+<div class="card h">
+  <h3 class="display">箱根 · 小田急 箱根山之酒店</h3>
+  <div class="dates">12/10 周四 15:00后 入住 → 12/11 周五 11:00前 退房 · 1晚</div>
+  <dl class="kv">
+    <dt>房间</dt><dd>标准双床房 × 6间，每间2人，含 12/10 晚餐 + 12/11 早餐</dd>
+    <dt>地址</dt><dd>神奈川県箱根町元箱根80 〒250-0522<br><span class="muted">Odakyu Hotel de Yama · Motohakone 80, Hakone Town</span></dd>
+    <dt>电话</dt><dd><a href="tel:+81460837415">+81-460-83-7415</a></dd>
+    <dt>费用</dt><dd>房费已预付（Trip.com）；到店另付温泉税 ¥300/间，共 ¥1,800</dd>
+    <dt>取消</dt><dd>12/3 23:59 前免费取消</dd>
+  </dl>
+</div>
+
+<div class="card t">
+  <h3 class="display">东京 · Airbnb「Home in Shinjuku City」</h3>
+  <div class="dates">12/11 周五 17:00后 入住 → 12/13 周日 10:00 退房 · 2晚</div>
+  <dl class="kv">
+    <dt>房东</dt><dd>Yasuki Kimura</dd>
+    <dt>地址</dt><dd>東京都新宿区百人町2丁目12-16 〒169-0073<br><span class="muted">2-chōme-12-16 Hyakuninchō, Shinjuku City, Tokyo</span></dd>
+    <dt>怎么去</dt><dd>新大久保站 步行3分钟；离新宿站一站</dd>
+    <dt>房子</dt><dd>180㎡，6间卧室，可住15人，建筑师设计</dd>
+  </dl>
+</div>
+
+<!-- ============ 每日行程 ============ -->
+<h2 class="display"><span class="emoji">📅</span>每日行程</h2>
+
+<section class="day o" id="d7">
+  <div class="day-head"><span class="d display">12/7</span><span class="w">周一<br>Mon</span><span class="t">抵达大阪 🛬</span></div>
+  <div class="day-body">
+  <ul class="tl">
+    <li><span class="time">09:30</span><span class="what"><span class="tag plane">福州组</span>MF809 长乐起飞 → 13:40 到成田 T1<small>入境取行李，接驳巴士到 T3，重新值机</small></span></li>
+    <li><span class="time">12:45</span><span class="what"><span class="tag plane">香港组</span>MM064 香港起飞 → 17:10 到关西 T2</span></li>
+    <li><span class="time">16:55</span><span class="what"><span class="tag plane">福州组</span>GK213 成田 T3 起飞 → 18:40 到关西 T1</span></li>
+    <li><span class="time">17:10</span><span class="what">香港组 关西机场 → 日本橋公寓<small>南海电铁 关西空港 → 难波约40分钟（Rapi:t 特急38分钟），再步行或地铁一站到日本橋；约19:00 到达，先办入住</small></span></li>
+    <li><span class="time">18:40</span><span class="what">福州组 关西机场 → 日本橋公寓<small>同样南海电铁到难波，约20:30 到达</small></span></li>
+    <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span><span class="tag tbd">待定</span><small>两组到达时间差1.5小时，建议在道顿堀、心斋桥附近各自或分批解决</small></span></li>
+  </ul>
+  </div>
+</section>
+
+<section class="day o" id="d8">
+  <div class="day-head"><span class="d display">12/8</span><span class="w">周二<br>Tue</span><span class="t">京都・奈良 ⛩️</span></div>
+  <div class="day-body">
+  <p class="muted">跟团巴士；含往返巴士、停车、导游；不含餐。</p>
+  <ul class="tl">
+    <li><span class="time">08:40</span><span class="what">日本橋站 2号出口 集合<small>从公寓步行即到</small></span></li>
+    <li><span class="time">10:00</span><span class="what">清水寺（150分钟，自由活动）<small><span class="tag meal">午餐</span>自理，清水坂一带</small></span></li>
+    <li><span class="time">13:00</span><span class="what">伏见稻荷大社（70分钟，自由活动）</span></li>
+    <li><span class="time">15:30</span><span class="what">奈良公园（90分钟，自由活动）🦌</span></li>
+    <li><span class="time">18:00</span><span class="what">回到日本橋站 2号出口 解散</span></li>
+    <li><span class="time">18:30</span><span class="what"><span class="tag meal">晚餐</span>つるとんたん 宗右衛門町店（乌冬）<small>3-17 Souemoncho, Chuo Ward, Osaka 542-0084 · 从解散点步行几分钟</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/AUd7KZ6y6nPJiC7G6?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/AUd7KZ6y6nPJiC7G6?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li><span class="time">饭后</span><span class="what">心斋桥、道顿堀一带逛街 🛍️<small>餐厅就在道顿堀旁，逛完步行5分钟回公寓</small></span></li>
+  </ul>
+  </div>
+</section>
+
+<section class="day o" id="d9">
+  <div class="day-head"><span class="d display">12/9</span><span class="w">周三<br>Wed</span><span class="t">神户・梅田 🥩</span></div>
+  <div class="day-body">
+  <ul class="tl">
+    <li><span class="time">上午</span><span class="what">前往神户三宫<small>阪神电车约45分钟，或 JR 大阪站→三宫约25分钟</small></span></li>
+    <li><span class="time">中午</span><span class="what"><span class="tag meal">午餐</span>神戸牛ステーキ Ishida. 本店<small>兵庫県神戸市中央区北長狭通1丁目21-21 TAKAIビル 3F · <a href="tel:+81785997779">+81 78-599-7779</a> · kobe-ishidaya.com</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/hpNrJRJFoysVZpJDA?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/hpNrJRJFoysVZpJDA?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li><span class="time">下午</span><span class="what">JR 三宫 → 大阪站，梅田购物 🛍️<small>Grand Front Osaka、阪急百货、LUCUA 都在大阪站周边</small></span></li>
+    <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>ひつまぶし 名古屋 備長 グランフロント大阪店（鳗鱼饭）<small>Grand Front Osaka 内，大阪站直结</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/nE53cxRLayAuAmuU8?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/nE53cxRLayAuAmuU8?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li><span class="time">饭后</span><span class="what">御堂筋线 梅田 → 难波，回日本橋公寓</span></li>
+  </ul>
+  </div>
+</section>
+
+<section class="day h" id="d10">
+  <div class="day-head"><span class="d display">12/10</span><span class="w">周四<br>Thu</span><span class="t">大阪 → 箱根 🚄</span></div>
+  <div class="day-body">
+  <ul class="tl">
+    <li><span class="time">上午</span><span class="what">黑門市场 🍣 边逛边吃<small>从公寓步行约3分钟，就在日本橋站旁；鲜鱼、和牛串、生蘑、水果，建议 10:00 前到人少<br>行李留在公寓</small></span></li>
+    <li><span class="time">12:00</span><span class="what"><span class="tag meal">午餐</span>黑門市场内自由解决<small>各摄各的，不用订座</small></span></li>
+    <li><span class="time">13:00</span><span class="what">回公寓取行李，打车 / 包车 → 新大阪站<small>约20–30分钟；12人带行李约需 2–3 辆出租车或一辆包车</small></span></li>
+    <li><span class="time">14:00</span><span class="what">新干线 新大阪 → 小田原 <span class="tag tbd">未订票</span><small>东海道新干线约2小时10分；Hikari 部分班次直达小田原，Nozomi 不停小田原</small></span></li>
+    <li><span class="time">16:15</span><span class="what">小田原 → 箱根山之酒店<small>箱根登山巴士约50分钟，或包车/出租车</small></span></li>
+    <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>酒店内（已含）♨️<small>温泉酒店晚餐分时段，到店后尽早确认</small></span></li>
+  </ul>
+  <div class="note"><b>注意：</b>Airbnb 退房时间是 10:00，饭后回去取行李需提前和房东 Masayuki 确认可延迟取行李或寄存。</div>
+  </div>
+</section>
+
+<section class="day h" id="d11">
+  <div class="day-head"><span class="d display">12/11</span><span class="w">周五<br>Fri</span><span class="t">箱根一日 → 东京 🗻</span></div>
+  <div class="day-body">
+  <p class="muted">倒序路线：行李全程寄存酒店，最后一站回到酒店附近，空手坐船和缆车。</p>
+  <ul class="tl">
+    <li><span class="time">07:30</span><span class="what"><span class="tag meal">早餐</span>酒店内（已含）</span></li>
+    <li><span class="time">09:00</span><span class="what">退房，行李寄存前台，包车出发</span></li>
+    <li><span class="time">10:00</span><span class="what">忍野八海（约40分钟）</span></li>
+    <li><span class="time">11:00</span><span class="what">山中湖 白鸟滨（约20分钟）</span></li>
+    <li><span class="time">12:00</span><span class="what">大涌谷（约50分钟）🥚<small><span class="tag meal">午餐</span><span class="tag tbd">待定</span> 黑玉子、简餐</small></span></li>
+    <li><span class="time">13:00</span><span class="what">箱根空中缆车 大涌谷 → 桃源台 🚡</span></li>
+    <li><span class="time">13:40</span><span class="what">箱根海盗船 桃源台港 → 元箱根港（约30分钟，自费）⛵</span></li>
+    <li><span class="time">14:30</span><span class="what">箱根神社 & 芦之湖水上鸟居（约60分钟）⛩️</span></li>
+    <li><span class="time">15:30</span><span class="what">步行回酒店取行李</span></li>
+    <li><span class="time">16:30</span><span class="what">包车出发 → 新宿 Airbnb，约18:30–19:00 到</span></li>
+    <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>拉面 🍜 四选一<small>一兰 新宿歌舞伎町店：步行约12分钟，24小时，单人隔间，晚高峰常排队30分钟以上<br>一兰 西新宿店：小滝橋通，步行约10分钟，人少，营业到凌晨 6:00<br>龙之家 新宿小滝橋通店：步行约10分钟，豚骨拉面、沾面都好，排队快，<b>22:00 关门</b><br>麺屋 优作（Ramen Yusaku）：就在百人町2丁目，步行3分钟，社区小店，<b>20:00 关门</b>，周三休息，要去得赶在到 Airbnb 后立刻出门</small><span class="links"><a class="btn" href="https://maps.google.com/?cid=17641287503749035709" target="_blank" rel="noopener">📍 一兰 歌舞伎町</a><a class="btn" href="https://maps.google.com/?cid=14975794739318295185" target="_blank" rel="noopener">📍 一兰 西新宿</a><a class="btn" href="https://maps.google.com/?cid=9924090625503313076" target="_blank" rel="noopener">📍 龙之家</a><a class="btn" href="https://maps.google.com/?cid=3542904572622005124" target="_blank" rel="noopener">📍 优作</a></span></span></li>
+  </ul>
+  <div class="note"><b>包车司机要点：</b>上午送到忍野八海 → 中午到大涌谷接 → 车直接开回元箱根酒店等人 → 送新宿。</div>
+  </div>
+</section>
+
+<section class="day t" id="d12">
+  <div class="day-head"><span class="d display">12/12</span><span class="w">周六<br>Sat</span><span class="t">涩谷・新宿 🌆</span></div>
+  <div class="day-body">
+  <ul class="tl">
+    <li><span class="time">上午</span><span class="what">JR 山手线 新大久保 → 涩谷，约15分钟</span></li>
+    <li><span class="time">中午</span><span class="what"><span class="tag meal">午餐</span>大衆居酒屋 ひろかつ 渋谷道玄坂店<span class="links"><a class="btn" href="https://maps.app.goo.gl/GFHcTq9oGcYCqmpu8?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/GFHcTq9oGcYCqmpu8?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li><span class="time">下午</span><span class="what">涩谷逛街 🛍️<small>Scramble Square、PARCO、109、宫下公园</small></span></li>
+    <li><span class="time">傍晚</span><span class="what">回 Airbnb 休息</span></li>
+    <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>磯丸水産 歌舞伎町東通り店（海鲜居酒屋）🐟<small>24小时营业，随到随吃，12人可能分桌</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/eDEb2EqaXFjPhpwYA?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/eDEb2EqaXFjPhpwYA?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li><span class="time">饭后</span><span class="what">歌舞伎町一带闲逛，步行约15分钟回 Airbnb</span></li>
+  </ul>
+  </div>
+</section>
+
+<section class="day t" id="d13">
+  <div class="day-head"><span class="d display">12/13</span><span class="w">周日<br>Sun</span><span class="t">回程 🛫</span></div>
+  <div class="day-body">
+  <ul class="tl">
+    <li><span class="time">早上</span><span class="what"><span class="tag meal">早餐</span><span class="tag tbd">待定</span><small>Airbnb 附近简单解决</small></span></li>
+    <li><span class="time">10:00</span><span class="what">Airbnb 退房</span></li>
+    <li><span class="time">10:30</span><span class="what">包车 新宿 → 成田机场 T1 <span class="tag tbd">待安排</span><small>约1.5–2小时，预留起飞前3小时到机场</small></span></li>
+    <li><span class="time">15:20</span><span class="what"><span class="tag plane">香港组 5人</span>HX609 成田 T1 起飞 → 19:55 到香港 T1<small>经济舱含餐</small></span></li>
+    <li><span class="time">15:30</span><span class="what"><span class="tag plane">福州组 7人</span>MF810 成田 T1 起飞 → 18:45 到福州长乐 T2<small>福州5人 + 香港组2人 · 两个航班都在 T1，相隔10分钟，12人一起到机场</small></span></li>
+  </ul>
+  </div>
+</section>
+
+<!-- ============ 待办 ============ -->
+<h2 id="todo" class="display"><span class="emoji">✅</span>待办清单</h2>
+<ul class="todo">
+  <li><div>新干线订票：12/10 新大阪 → 小田原，12人<span>建议 14:00 左右班次</span></div></li>
+  <li><div>箱根包车：12/11 一日 + 送新宿<span>分段接送：忍野八海 → 大涌谷 → 元箱根酒店 → 新宿</span></div></li>
+  <li><div>成田包车：12/13 新宿 Airbnb → 成田 T1，10:30 出发</div></li>
+  <li><div>预约 Ishida 神户牛 午餐：12/9，12人<span>电话 +81 78-599-7779 或官网；顺便确认周三中午营业</span></div></li>
+  <li><div>预约 備長 鳗鱼饭 晚餐：12/9，12人</div></li>
+  <li><div>预约 ひろかつ 涩谷 午餐：12/12，12人</div></li>
+  <li><div>大阪房东 Masayuki：确认 12/10 午饭后回公寓取行李</div></li>
+  <li><div>东京房东 Yasuki Kimura：告知 12/11 约 19:00 到达</div></li>
+  <li><div>箱根酒店：确认 12/10 预计到达时间和晚餐时段</div></li>
+  <li><div>补充：12/7 晚餐、12/11 午餐、12/13 早餐</div></li>
+</ul>
+
+<footer>信息根据预订截图整理，交通时间为参考估计 · 行程更新后此页同步更新 🎒<br>🌐 网页版：<a href="https://cmtk888.github.io/japan-trip/" target="_blank" rel="noopener">cmtk888.github.io/japan-trip</a></footer>
+</div>
+</body>
+</html>
