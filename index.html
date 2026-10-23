@@ -101,6 +101,14 @@ p{margin:0 0 10px}
 .o .btn{color:var(--osaka-deep)}.h .btn{color:var(--hakone-deep)}.t .btn{color:var(--tokyo-deep)}
 .note{background:var(--pink-soft);padding:12px 16px;border-radius:14px;margin:12px 0 4px;font-size:15px}
 .note b{color:var(--pink)}
+.alert{margin:18px 0 6px;padding:14px 16px;border-radius:18px;background:#FFF3E8;border:2px solid var(--osaka);box-shadow:var(--shadow)}
+.alert h3{margin:0 0 8px;font-size:17px;color:var(--osaka-deep);display:flex;align-items:center;gap:8px}
+.alert ol{margin:0;padding-left:20px;font-size:15px}
+.alert li{margin:4px 0}
+.alert li b{color:var(--osaka-deep)}
+.alert small{display:block;color:var(--ink-2);font-size:13.5px;margin-top:2px}
+.alert a{color:var(--osaka-deep);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+
 .day.o .driver{--c:var(--osaka-deep)}.day.h .driver{--c:var(--hakone-deep)}.day.t .driver{--c:var(--tokyo-deep)}
 .driver{margin:14px 0 4px;border:2px dashed var(--c,#999);border-radius:16px;padding:12px 14px;background:#fff}
 .driver summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;align-items:center;gap:8px}
@@ -126,6 +134,7 @@ p{margin:0 0 10px}
 .todo li{display:flex;gap:12px;padding:12px 16px;margin-bottom:10px;background:var(--card);border-radius:16px;box-shadow:var(--shadow);font-size:15px}
 .todo li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border:2px solid var(--pink);border-radius:7px}
 .todo li span{color:var(--ink-2);display:block;font-size:14px}
+.todo li span a{color:var(--pink);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;word-break:break-all}
 
 footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -165,6 +174,15 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
 </nav>
 
 <!-- ============ 航班 ============ -->
+<div class="alert" id="alert">
+  <h3>🚨 两张票要提前订</h3>
+  <ol>
+    <li><b>新干线 12/10 新大阪 → 小田原，12 人指定席</b><small>12 月上旬平日是淡季，票不紧张；建议提前 1 周订（12 人想坐一起），最晚提前 2 天也来得及。用 smartEX 分 2 单（每单最多 6 人）。两个班次二选一，到时弹性决定：<b>方案 A ひかり654号 14:18→16:33</b>（按现行程）／<b>方案 B ひかり650号 12:18→14:38</b>（早到酒店泡温泉，黑門市场 11:00 吃午饭）</small></li>
+    <li><b>嵯峨野小火车 12/8 嵯峨 → 亀岡，16:02 班，12 张</b><small>11/8–11/10 之间官网开售（日本 0:00 = 香港前一天 23:00），11/8 起每天查；全车指定席，12 月是旺季，现场票基本没有</small></li>
+  </ol>
+  <small style="margin-top:8px">详细订票网址和步骤见页尾 <a href="#todo">✅ 待办清单</a></small>
+</div>
+
 <h2 id="flights" class="display"><span class="emoji">✈️</span>航班</h2>
 <p class="muted">12人分两组出发：香港7人、福州5人，12/7 在大阪会合。</p>
 
@@ -298,7 +316,7 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
     <li class="go"><span class="time"></span><span class="what">🚗 清水寺 → 岚山 约40分钟</span></li>
     <li><span class="time">14:40</span><span class="what">岚山：竹林小径、渡月桥（65分钟）🎋<small>先看竹林（离小火车站近），时间够再去渡月桥</small></span></li>
     <li class="go"><span class="time"></span><span class="what">🚶 竹林 → トロッコ嵯峨站 步行约10分钟</span></li>
-    <li><span class="time">16:02</span><span class="what">嵯峨野小火车 🚂 トロッコ嵯峨 → トロッコ亀岡 16:25 <span class="tag tbd">未订票</span><small>当天末班白天车，沿保津峡约25分钟，16:45 日落前抵达；发车时间以订票时的时刻表为准。包车在亀岡站等</small></span></li>
+    <li><span class="time">16:02</span><span class="what">嵯峨野小火车 🚂 トロッコ嵯峨 → トロッコ亀岡 16:25 <span class="tag tbd">未订票</span><small>当天末班白天车，沿保津峡约25分钟，16:45 日落前抵达；发车时间以订票时的时刻表为准。包车在亀岡站等<br>也可从 <b>トロッコ嵐山站</b> 上车（16:05 发，离竹林出口更近，票价相同）<br>12/8 下午嵯峨→亀岡全部班次：<b>15:02</b>（→15:25，岚山只剩20分钟，太赶）· <b>16:02</b>（→16:25，现行方案）· <b>17:10</b>（→17:38，点灯班「光の幻想列车」，全程天黑，晚餐要推迟到19:15）</small></span></li>
     <li class="go"><span class="time"></span><span class="what">🚗 亀岡 → 大阪宗右衛門町 约80分钟</span></li>
     <li><span class="time">18:00</span><span class="what"><span class="tag meal">晚餐</span>つるとんたん 宗右衛門町店（乌冬）<small>3-17 Souemoncho, Chuo Ward, Osaka 542-0084 · 包车直接送到餐厅</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/AUd7KZ6y6nPJiC7G6?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/AUd7KZ6y6nPJiC7G6?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
     <li><span class="time">饭后</span><span class="what">心斋桥、道顿堀一带逛街 🛍️<small>餐厅就在道顿堀旁，逛完步行5分钟回公寓</small></span></li>
@@ -308,7 +326,7 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
     <summary>🚐 给包车司机的说明</summary>
     <div class="dsub">12/8 周二 · 12人（长辈较多）· 无大件行李 · 全天约 9 小时</div>
     <div class="dwrap"><table><tr><th>时间</th><th>地点・安排（括号内为导航用日文地址）</th></tr><tr><td class="t">09:00</td><td><span class="ja">大阪日本橋公寓门口上车，出发去京都</span><span class="zh">大阪市中央区日本橋1丁目4-12</span></td></tr><tr><td class="t">09:50</td><td><span class="ja">到伏见稻荷大社，停车场等候约65分钟</span><span class="zh">京都市伏見区深草藪之内町68</span></td></tr><tr><td class="t">10:55</td><td><span class="ja">从伏见稻荷出发去四条河原町</span></td></tr><tr><td class="t">11:15</td><td><span class="ja">京都髙島屋门口放人即可，大家午餐约80分钟，车在附近找地方等</span><span class="zh">京都市下京区四条通河原町西入真町52</span></td></tr><tr><td class="t">12:35</td><td><span class="ja">在髙島屋附近接人，去清水寺</span></td></tr><tr><td class="t">12:45</td><td><span class="ja">到清水寺，停车场等候约75分钟</span><span class="zh">京都市東山区清水1丁目294</span></td></tr><tr><td class="t">14:05</td><td><span class="ja">从清水寺出发去岚山</span></td></tr><tr><td class="t">14:40</td><td><span class="ja">岚山天龙寺附近放人。大家逛竹林、渡月桥后<b>自己去トロッコ嵯峨站坐小火车</b>，不用再上车</span><span class="zh">京都市右京区嵯峨天龍寺芒ノ馬場町</span></td></tr><tr><td class="t">15:30</td><td><span class="ja"><b>空车先开去龟冈</b>，在トロッコ亀岡站等（务必 16:20 前到）</span><span class="zh">亀岡市篠町馬堀</span></td></tr><tr><td class="t">16:25</td><td><span class="ja">大家坐小火车 16:25 到龟冈站，上车回大阪</span></td></tr><tr><td class="t">18:00</td><td><span class="ja">送到つるとんたん 宗右卫门町店门口，结束</span><span class="zh">大阪市中央区宗右衛門町3-17</span></td></tr></table></div>
-    <div class="dfoot"><button class="copybtn" data-copy="drv8">📋 复制文字发给司机</button><small>小火车 16:02 嵯峨发、16:25 龟冈到，司机务必 16:20 前到龟冈站。</small></div>
+    <div class="dfoot"><button class="copybtn" data-copy="drv8">📋 复制文字发给司机</button><small>小火车 16:02 嵯峨发、16:25 龟冈到，司机务必 16:20 前到龟冈站。若临时改坐 15:02 班，则 15:25 到龟冈，司机 15:20 前到。</small></div>
     <textarea hidden id="drv8-txt">【12月8日 周二 · 京都包车一天】12人，长辈较多，没有大件行李，全天约9小时
 09:00 大阪日本橋公寓门口上车，出发去京都（大阪市中央区日本橋1丁目4-12）
 09:50 到伏见稻荷大社，停车场等候约65分钟（京都市伏見区深草藪之内町68）
@@ -321,7 +339,7 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
 15:30 空车先开去龟冈，在トロッコ亀岡站等（务必 16:20 前到）（亀岡市篠町馬堀）
 16:25 大家坐小火车 16:25 到龟冈站，上车回大阪
 18:00 送到つるとんたん 宗右卫门町店门口，结束（大阪市中央区宗右衛門町3-17）
-※ 小火车 16:02 嵯峨发、16:25 龟冈到，司机务必 16:20 前到龟冈站。</textarea>
+※ 小火车 16:02 嵯峨发、16:25 龟冈到，司机务必 16:20 前到龟冈站。若临时改坐 15:02 班，则 15:25 到龟冈，司机 15:20 前到。</textarea>
   </details>
   </div>
 </section>
@@ -435,9 +453,9 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
     <li class="go"><span class="time"></span><span class="what">🚶 黑门市场 → 公寓 步行约3分钟</span></li>
     <li><span class="time">13:00</span><span class="what">回公寓取行李，打车 / 包车 → 新大阪站<small>约20–30分钟；12人带行李约需 2–3 辆出租车或一辆包车</small></span></li>
     <li class="go"><span class="time"></span><span class="what">🚕 日本橋 → 新大阪站 约25分钟</span></li>
-    <li><span class="time">14:00</span><span class="what">新干线 新大阪 → 小田原 <span class="tag tbd">未订票</span><small>东海道新干线约2小时10分；Hikari 部分班次直达小田原，Nozomi 不停小田原</small></span></li>
-    <li class="go"><span class="time"></span><span class="what">🚄 新大阪 → 小田原 约2小时10分（Hikari 直达）</span></li>
-    <li><span class="time">16:15</span><span class="what">小田原 → 箱根山之酒店<small>箱根登山巴士约50分钟，或包车/出租车</small></span></li>
+    <li><span class="time">14:18</span><span class="what">新干线 二选一 <span class="tag tbd">未订票</span><small><b>方案 A：ひかり654号 14:18 → 16:33</b>，按现行程 12:00 午饭、13:00 回公寓取行李<br><b>方案 B：ひかり650号 12:18 → 14:38</b>，黑門市场 11:00 午饭、11:45 回公寓、12:00 出发去新大阪；14:38 到小田原、15:30 到酒店，晚饭前能先泡温泉<br>两班都经名古屋直达小田原，约 2 小时 15 分，中途不用换车；Nozomi 不停小田原<br>当天 11:00–15:00 从新大阪出发、停小田原的全部班次：<br>こだま824 11:54→15:09 · <b>ひかり650 12:18→14:38</b> · こだま828 12:54→16:09 · こだま832 13:54→17:09 · <b>ひかり654 14:18→16:33 ✅ 首选</b> · こだま836 14:54→18:09<br>ひかり 两小时才一班，こだま 站站停要 3 小时 15 分。想早点到酒店泡温泉就改 12:18 的 ひかり650（黑門市场要 11:00 吃午饭、11:45 出发）</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚄 方案 A 14:18→16:33 ひかり654 ／ 方案 B 12:18→14:38 ひかり650（都约 2 小时 15 分）</span></li>
+    <li><span class="time">16:45</span><span class="what">小田原 → 箱根山之酒店，约 17:30 到（方案 B：14:45 出发、15:30 到）<small>箱根登山巴士约50分钟，或包车/出租车约40分钟；天已黑，建议包车或两辆出租车</small></span></li>
     <li class="go"><span class="time"></span><span class="what">🚌 小田原 → 元箱根 登山巴士约50分钟；包车约40分钟</span></li>
     <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>酒店内（已含）♨️<small>温泉酒店晚餐分时段，到店后尽早确认</small></span></li>
   </ul>
@@ -445,13 +463,13 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
   <details class="driver" id="drv10">
     <summary>🚐 给包车司机的说明</summary>
     <div class="dsub">12/10 周四 · 12人 · 大件行李多（每人一个箱子）· 需要大车</div>
-    <div class="dwrap"><table><tr><th>时间</th><th>地点・安排（括号内为导航用日文地址）</th></tr><tr><td class="t">13:00</td><td><span class="ja">大阪日本橋公寓门口上车、装行李</span><span class="zh">大阪市中央区日本橋1丁目4-12</span></td></tr><tr><td class="t">13:30</td><td><span class="ja">新大阪站新干线口放人，结束（我们坐 14:00 左右的新干线）</span><span class="zh">新大阪駅 新幹線口</span></td></tr><tr><td class="t">另选</td><td><span class="ja"><b>（如果小田原那段也包车）</b>16:15 小田原站东口接人，送到小田急 箱根山之酒店，约40分钟</span><span class="zh">小田急 山のホテル：箱根町元箱根80</span></td></tr></table></div>
-    <div class="dfoot"><button class="copybtn" data-copy="drv10">📋 复制文字发给司机</button><small>新干线约 16:10 到小田原；小田原到酒店若不包车就坐登山巴士。</small></div>
+    <div class="dwrap"><table><tr><th>时间</th><th>地点・安排（括号内为导航用日文地址）</th></tr><tr><td class="t">13:00</td><td><span class="ja">大阪日本橋公寓门口上车、装行李</span><span class="zh">大阪市中央区日本橋1丁目4-12</span></td></tr><tr><td class="t">13:30</td><td><span class="ja">新大阪站新干线口放人，结束（我们坐 14:18 的新干线）</span><span class="zh">新大阪駅 新幹線口</span></td></tr><tr><td class="t">另选</td><td><span class="ja"><b>（如果小田原那段也包车）</b>16:40 小田原站东口接人（方案 B 则 14:45），送到小田急 箱根山之酒店，约40分钟</span><span class="zh">小田急 山のホテル：箱根町元箱根80</span></td></tr></table></div>
+    <div class="dfoot"><button class="copybtn" data-copy="drv10">📋 复制文字发给司机</button><small>方案 A 坐 14:18 ひかり654（13:00 公寓上车）；方案 B 坐 12:18 ひかり650（则改 11:45 公寓上车、12:15 到新大阪，小田原 14:38 到）。出发前几天定好再告诉司机。</small></div>
     <textarea hidden id="drv10-txt">【12月10日 周四 · 公寓送新大阪站】12人，每人一个行李箱，需要大车
 13:00 大阪日本橋公寓门口上车、装行李（大阪市中央区日本橋1丁目4-12）
-13:30 新大阪站新干线口放人，结束（我们坐 14:00 左右的新干线）（新大阪駅 新幹線口）
-另选 （如果小田原那段也包车）16:15 小田原站东口接人，送到小田急 箱根山之酒店，约40分钟（小田急 山のホテル：箱根町元箱根80）
-※ 新干线约 16:10 到小田原；小田原到酒店若不包车就坐登山巴士。</textarea>
+13:30 新大阪站新干线口放人，结束（我们坐 14:18 的新干线）（新大阪駅 新幹線口）
+另选 （如果小田原那段也包车）16:40 小田原站东口接人（方案 B 则 14:45），送到小田急 箱根山之酒店，约40分钟（小田急 山のホテル：箱根町元箱根80）
+※ 以上按方案 A（14:18 ひかり654）。若改方案 B（12:18 ひかり650），则 11:45 公寓上车、12:15 到新大阪，小田原 14:38 到、14:45 接。</textarea>
   </details>
   </div>
 </section>
@@ -633,17 +651,17 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
 <h2 id="todo" class="display"><span class="emoji">✅</span>待办清单</h2>
 <ul class="todo">
   <li><div>京都包车：12/8 全天，日本橋 → 伏见 → 四条河原町（放人后另找地方等）→ 清水寺 → 岚山 → 空车到亀岡站接 → 送到宗右衛門町</div></li>
-  <li><div>嵯峨野小火车订票：12/8 下午 嵯峨 → 亀岡 方向，16:02 班次，12张<span>11/8 凌晨 0:00（日本时间）官网开售，12人连座要早订</span></div></li>
-  <li><div>新干线订票：12/10 新大阪 → 小田原，12人<span>建议 14:00 左右班次</span></div></li>
+  <li><div>嵯峨野小火车订票：12/8 下午 嵯峨（或嵐山）→ 亀岡 方向，16:02 班次，12张，单程 ¥880/人 共 ¥10,560<span>官网：<a href="https://www.sagano-kanko.co.jp/" target="_blank" rel="noopener">sagano-kanko.co.jp</a> → 点「チケット予約はこちら」，信用卡付款，凭预约号/邮件直接乘车<br>开售：乘车日前约 1 个月～28 天，即 11/8–11/10 之间（日本 0:00 = 香港前一天 23:00），11/8 起每天查一次，12 人连座要抢<br>备用：Klook / Trip.com / VELTRA 也卖，价格相同但放票稍晚</span></div></li>
+  <li><div>新干线订票：12/10 新大阪 → 小田原，12人，方案 A ひかり654号 14:18→16:33 或 方案 B ひかり650号 12:18→14:38，出发前定<span>不紧张：12 月上旬平日淡季，提前 1 周订可保 12 人坐一起，最晚提前 2 天<br>票价：普通车指定席约 ¥13,000/人，12 人约 ¥156,000；只能坐 Hikari 或 Kodama，Nozomi 不停小田原<br>首选 <a href="https://smart-ex.jp/" target="_blank" rel="noopener">smartEX</a>（JR 东海官方 App/网站，支持海外信用卡，可提前最长 1 年预约，每单最多 6 人 → 分 2 单订；上车前在新大阪站机器凭 QR 码取票或绑交通卡）<br>一般发售：乘车日前 1 个月 10:00 日本时间（11/10 上午 10:00 = 香港 9:00）<br>备用：Klook / Trip.com 代订；或 12/7 到大阪后直接在新大阪站绿色窗口买，12 月初平日周四通常有票</span></div></li>
   <li><div>箱根包车：12/11 半日 + 送新宿<span>酒店 → 桃源台港接 → 大涌谷 → 玻璃之森/酒店分送 → 接回 → 酒店取行李 → 新宿</span></div></li>
   <li><div>成田包车：12/13 新宿 Airbnb → 成田 T1，10:30 出发</div></li>
-  <li><div>预约 Ishida 神户牛 午餐：12/9，12人<span>电话 +81 78-599-7779 或官网；顺便确认周三中午营业</span></div></li>
-  <li><div>预约 備長 鳗鱼饭 晚餐：12/9，12人</div></li>
-  <li><div>预约 ひろかつ 涩谷 午餐：12/12，12人</div></li>
+  <li><div>预约 Ishida 神户牛 午餐：12/9 12:00，12人<span>官网预约：<a href="https://www.kobe-ishidaya.com/" target="_blank" rel="noopener">kobe-ishidaya.com</a>（有英文页）或电话 +81 78-599-7779<br>截图显示周三 17:00 开门，<b>务必先确认周三中午是否营业</b>，不行就改三宫其他神户牛店</span></div></li>
+  <li><div>预约 備長 鳗鱼饭 晚餐：12/9 18:30，12人<span>Grand Front 大阪 南馆 7F，JR 大阪站步行 2 分钟，晚市 17:00–23:00，人均约 ¥5,500<br>最稳妥是打电话 +81 50-5487-4054（预约专线，有英语员工），说「12名、テーブル希望」；官网 <a href="https://www.hitsumabushi.co.jp/" target="_blank" rel="noopener">hitsumabushi.co.jp</a> 列有各店联系方式（ぐるなび等日本订位网在港、内地可能打不开）</span></div></li>
+  <li><div>预约 ひろかつ 涩谷 午餐：12/12 12:30，12人<span>道玄坂 1-5-4 B1F，涩谷站步行 3 分钟，周六 12:00 开门，人均约 ¥3,000，可坐 37 人<br>店电话 03-6416-3786；网上订位 <a href="https://hitosara.com/0031354123/" target="_blank" rel="noopener">ヒトサラ</a>（日文）或 <a href="https://savorjapan.com/0031354123" target="_blank" rel="noopener">SavorJapan</a>（英文表单）</span></div></li>
   <li><div>大阪房东 Masayuki：确认 12/10 午饭后回公寓取行李</div></li>
   <li><div>东京房东 Yasuki Kimura：告知 12/11 约 18:00 到达</div></li>
   <li><div>箱根酒店：确认 12/10 预计到达时间和晚餐时段</div></li>
-  <li><div>玻璃之森预售票：A 组人数确定后在官网买，每人省 ¥200</div></li>
+  <li><div>玻璃之森预售票：A 组人数确定后在官网买，每人省 ¥200<span>官网：<a href="https://www.hakone-garasunomori.jp/" target="_blank" rel="noopener">hakone-garasunomori.jp</a>，网上预售 ¥1,600（现场成人 ¥1,800、65 岁以上 ¥1,700）</span></div></li>
   <li><div>补充：12/7 晚餐、12/13 早餐</div></li>
 </ul>
 
