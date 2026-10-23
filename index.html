@@ -86,6 +86,9 @@ p{margin:0 0 10px}
 .tl{list-style:none;margin:0;padding:0}
 .tl li{display:grid;grid-template-columns:4.4em 1fr;gap:10px;padding:11px 0;position:relative}
 .tl li+li{border-top:1px solid var(--rule)}
+.tl li.go{padding:5px 0 5px;border-top:0}
+.tl li.go+li{border-top:1px solid var(--rule)}
+.tl li.go .what{font-size:13px;color:var(--ink-2);background:var(--map-bg);display:inline-block;padding:3px 10px;border-radius:999px}
 .tl .time{font-variant-numeric:tabular-nums;color:var(--ink-2);font-size:14px;padding-top:3px;font-weight:500}
 .tl .what{font-size:16px}
 .tl .what small{display:block;color:var(--ink-2);font-size:14px;margin-top:3px}
@@ -98,6 +101,25 @@ p{margin:0 0 10px}
 .o .btn{color:var(--osaka-deep)}.h .btn{color:var(--hakone-deep)}.t .btn{color:var(--tokyo-deep)}
 .note{background:var(--pink-soft);padding:12px 16px;border-radius:14px;margin:12px 0 4px;font-size:15px}
 .note b{color:var(--pink)}
+.day.o .driver{--c:var(--osaka-deep)}.day.h .driver{--c:var(--hakone-deep)}.day.t .driver{--c:var(--tokyo-deep)}
+.driver{margin:14px 0 4px;border:2px dashed var(--c,#999);border-radius:16px;padding:12px 14px;background:#fff}
+.driver summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;align-items:center;gap:8px}
+.driver summary::-webkit-details-marker{display:none}
+.driver summary::after{content:"▾";margin-left:auto;color:var(--c,#999)}
+.driver[open] summary::after{content:"▴"}
+.driver .dsub{font-size:13px;color:#777;margin:6px 0 10px}
+.driver table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.driver th{text-align:left;font-size:12px;color:#888;font-weight:600;padding:4px 6px;border-bottom:1px solid #eee}
+.driver td{padding:7px 6px;border-bottom:1px solid #f1f1f1;vertical-align:top}
+.driver td.t{white-space:nowrap;font-weight:700;color:var(--c,#333);width:52px}
+.driver td .ja{display:block}
+.driver td .zh{display:block;font-size:12.5px;color:#777}
+.driver .dwrap{overflow-x:auto}
+.driver .dfoot{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.driver .dfoot small{color:#777;font-size:12.5px}
+.driver .copybtn{border:1px solid var(--c,#999);color:var(--c,#333);background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;font-family:inherit}
+.driver .copybtn:active{opacity:.7}
+
 
 /* todo */
 .todo{list-style:none;padding:0;margin:0}
@@ -107,6 +129,13 @@ p{margin:0 0 10px}
 
 footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+/* route maps */
+:root{--map-bg:#FFF6E8;--map-grid:#F3E6D2}
+.mapbox{margin:12px 0 6px}
+.route-map{width:100%;height:auto;display:block;border-radius:16px}
+.maprow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:8px}
+.maprow .btn{color:var(--ink)}
+.day.o .maprow .btn{color:var(--osaka-deep)}.day.h .maprow .btn{color:var(--hakone-deep)}.day.t .maprow .btn{color:var(--tokyo-deep)}
 </style>
 </head>
 <body>
@@ -199,6 +228,7 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
 <section class="day o" id="d7">
   <div class="day-head"><span class="d display">12/7</span><span class="w">周一<br>Mon</span><span class="t">抵达大阪 🛬</span></div>
   <div class="day-body">
+  <div class="mapbox"><div class="maprow"><span class="muted">两组分别从关西机场坐南海电铁到难波</span><a class="btn" href="https://www.google.com/maps/dir/%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF/%E6%97%A5%E6%9C%AC%E6%A9%8B%E9%A7%85%20%E5%A4%A7%E9%98%AA" target="_blank" rel="noopener">🗺️ 在 Google Maps 打开路线</a></div></div>
   <ul class="tl">
     <li><span class="time">09:30</span><span class="what"><span class="tag plane">福州组</span>MF809 长乐起飞 → 13:40 到成田 T1<small>入境取行李，接驳巴士到 T3，重新值机</small></span></li>
     <li><span class="time">12:45</span><span class="what"><span class="tag plane">香港组</span>MM064 香港起飞 → 17:10 到关西 T2</span></li>
@@ -211,29 +241,143 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
 </section>
 
 <section class="day o" id="d8">
-  <div class="day-head"><span class="d display">12/8</span><span class="w">周二<br>Tue</span><span class="t">京都・奈良 ⛩️</span></div>
+  <div class="day-head"><span class="d display">12/8</span><span class="w">周二<br>Tue</span><span class="t">京都一日 ⛩️</span></div>
   <div class="day-body">
-  <p class="muted">跟团巴士；含往返巴士、停车、导游；不含餐。</p>
+  <div class="mapbox"><svg class="route-map" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="当日路线示意图">
+<rect x="0" y="0" width="640" height="300" rx="16" fill="var(--map-bg)"/>
+<line x1="0" y1="0" x2="0" y2="300" stroke="var(--map-grid)"/>
+<line x1="40" y1="0" x2="40" y2="300" stroke="var(--map-grid)"/>
+<line x1="80" y1="0" x2="80" y2="300" stroke="var(--map-grid)"/>
+<line x1="120" y1="0" x2="120" y2="300" stroke="var(--map-grid)"/>
+<line x1="160" y1="0" x2="160" y2="300" stroke="var(--map-grid)"/>
+<line x1="200" y1="0" x2="200" y2="300" stroke="var(--map-grid)"/>
+<line x1="240" y1="0" x2="240" y2="300" stroke="var(--map-grid)"/>
+<line x1="280" y1="0" x2="280" y2="300" stroke="var(--map-grid)"/>
+<line x1="320" y1="0" x2="320" y2="300" stroke="var(--map-grid)"/>
+<line x1="360" y1="0" x2="360" y2="300" stroke="var(--map-grid)"/>
+<line x1="400" y1="0" x2="400" y2="300" stroke="var(--map-grid)"/>
+<line x1="440" y1="0" x2="440" y2="300" stroke="var(--map-grid)"/>
+<line x1="480" y1="0" x2="480" y2="300" stroke="var(--map-grid)"/>
+<line x1="520" y1="0" x2="520" y2="300" stroke="var(--map-grid)"/>
+<line x1="560" y1="0" x2="560" y2="300" stroke="var(--map-grid)"/>
+<line x1="600" y1="0" x2="600" y2="300" stroke="var(--map-grid)"/>
+<line x1="0" y1="0" x2="640" y2="0" stroke="var(--map-grid)"/>
+<line x1="0" y1="40" x2="640" y2="40" stroke="var(--map-grid)"/>
+<line x1="0" y1="80" x2="640" y2="80" stroke="var(--map-grid)"/>
+<line x1="0" y1="120" x2="640" y2="120" stroke="var(--map-grid)"/>
+<line x1="0" y1="160" x2="640" y2="160" stroke="var(--map-grid)"/>
+<line x1="0" y1="200" x2="640" y2="200" stroke="var(--map-grid)"/>
+<line x1="0" y1="240" x2="640" y2="240" stroke="var(--map-grid)"/>
+<line x1="0" y1="280" x2="640" y2="280" stroke="var(--map-grid)"/>
+<path d="M548.6,238.2 L536.8,105.0 L584.0,137.4 L268.4,72.6 L56.0,61.8" fill="none" stroke="var(--osaka)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="1 9" opacity=".9"/>
+<circle cx="548.6" cy="238.2" r="14" fill="var(--osaka)" stroke="#fff" stroke-width="3"/>
+<text x="548.6" y="243.2" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">1</text>
+<text x="548.6" y="274.2" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">伏见稻荷</text>
+<circle cx="536.8" cy="105.0" r="14" fill="var(--osaka)" stroke="#fff" stroke-width="3"/>
+<text x="536.8" y="110.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">2</text>
+<text x="536.8" y="81.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">高岛屋 · 午餐</text>
+<circle cx="584.0" cy="137.4" r="14" fill="var(--osaka)" stroke="#fff" stroke-width="3"/>
+<text x="584.0" y="142.4" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">3</text>
+<text x="606.0" y="142.4" text-anchor="start" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">清水寺</text>
+<circle cx="268.4" cy="72.6" r="14" fill="var(--osaka)" stroke="#fff" stroke-width="3"/>
+<text x="268.4" y="77.6" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">4</text>
+<text x="268.4" y="108.6" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">岚山 · 上小火车</text>
+<circle cx="56.0" cy="61.8" r="14" fill="var(--osaka)" stroke="#fff" stroke-width="3"/>
+<text x="56.0" y="66.8" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">5</text>
+<text x="56.0" y="37.8" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">龟冈站 → 回大阪</text>
+</svg><div class="maprow"><span class="muted">从大阪日本桥出发，最后从龟冈回大阪</span><a class="btn" href="https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%A9%8B%E9%A7%85%20%E5%A4%A7%E9%98%AA/%E4%BC%8F%E8%A6%8B%E7%A8%B2%E8%8D%B7%E5%A4%A7%E7%A4%BE/%E4%BA%AC%E9%83%BD%E9%AB%98%E5%B3%B6%E5%B1%8BS.C./%E6%B8%85%E6%B0%B4%E5%AF%BA/%E5%B5%90%E5%B1%B1%20%E7%AB%B9%E6%9E%97%E3%81%AE%E5%B0%8F%E5%BE%84/%E3%83%88%E3%83%AD%E3%83%83%E3%82%B3%E5%B5%AF%E5%B3%A8%E9%A7%85/%E3%83%88%E3%83%AD%E3%83%83%E3%82%B3%E4%BA%80%E5%B2%A1%E9%A7%85/%E3%81%A4%E3%82%8B%E3%81%A8%E3%82%93%E3%81%9F%E3%82%93%20%E5%AE%97%E5%8F%B3%E8%A1%9B%E9%96%80%E7%94%BA%E5%BA%97" target="_blank" rel="noopener">🗺️ 在 Google Maps 打开路线</a></div></div>
+  <p class="muted">包车一日。路线：伏见（南）→ 四条河原町午餐（中）→ 清水寺（东）→ 岚山（西）→ 嵯峨站坐小火车到龟冈 → 从龟冈直接回大阪，不走回头路。</p>
   <ul class="tl">
-    <li><span class="time">08:40</span><span class="what">日本橋站 2号出口 集合<small>从公寓步行即到</small></span></li>
-    <li><span class="time">10:00</span><span class="what">清水寺（150分钟，自由活动）<small><span class="tag meal">午餐</span>自理，清水坂一带</small></span></li>
-    <li><span class="time">13:00</span><span class="what">伏见稻荷大社（70分钟，自由活动）</span></li>
-    <li><span class="time">15:30</span><span class="what">奈良公园（90分钟，自由活动）🦌</span></li>
-    <li><span class="time">18:00</span><span class="what">回到日本橋站 2号出口 解散</span></li>
-    <li><span class="time">18:30</span><span class="what"><span class="tag meal">晚餐</span>つるとんたん 宗右衛門町店（乌冬）<small>3-17 Souemoncho, Chuo Ward, Osaka 542-0084 · 从解散点步行几分钟</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/AUd7KZ6y6nPJiC7G6?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/AUd7KZ6y6nPJiC7G6?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li><span class="time">09:00</span><span class="what">包车从日本橋公寓出发</span></li>
+    <li class="go"><span class="time"></span><span class="what">🚗 日本橋 → 伏见稻荷 约50分钟</span></li>
+    <li><span class="time">09:50</span><span class="what">伏见稻荷大社（65分钟）<small>走到千本鸟居、奥社奉拜所即可，不必登顶</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚗 伏见 → 四条河原町 约20分钟；市中心难停车，司机放人后去别处等</span></li>
+    <li><span class="time">11:15</span><span class="what"><span class="tag meal">午餐</span>京都髙島屋 S.C. 7楼「京回廊」餐厅街（75分钟）<small>11:00 刚开门，不用排队；和食、鳗鱼、荞麦、中华、洋食十几家，12人分两三桌各吃各的。地下食品馆可顺便买伴手礼</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/g4Gq4Kf1ZFfQfSt46?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/g4Gq4Kf1ZFfQfSt46?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚗 四条河原町 → 清水寺 约10分钟</span></li>
+    <li><span class="time">12:45</span><span class="what">清水寺 + 二年坂、三年坂（75分钟）</span></li>
+    <li class="go"><span class="time"></span><span class="what">🚗 清水寺 → 岚山 约40分钟</span></li>
+    <li><span class="time">14:40</span><span class="what">岚山：竹林小径、渡月桥（65分钟）🎋<small>先看竹林（离小火车站近），时间够再去渡月桥</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚶 竹林 → トロッコ嵯峨站 步行约10分钟</span></li>
+    <li><span class="time">16:02</span><span class="what">嵯峨野小火车 🚂 トロッコ嵯峨 → トロッコ亀岡 16:25 <span class="tag tbd">未订票</span><small>当天末班白天车，沿保津峡约25分钟，16:45 日落前抵达；发车时间以订票时的时刻表为准。包车在亀岡站等</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚗 亀岡 → 大阪宗右衛門町 约80分钟</span></li>
+    <li><span class="time">18:00</span><span class="what"><span class="tag meal">晚餐</span>つるとんたん 宗右衛門町店（乌冬）<small>3-17 Souemoncho, Chuo Ward, Osaka 542-0084 · 包车直接送到餐厅</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/AUd7KZ6y6nPJiC7G6?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/AUd7KZ6y6nPJiC7G6?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
     <li><span class="time">饭后</span><span class="what">心斋桥、道顿堀一带逛街 🛍️<small>餐厅就在道顿堀旁，逛完步行5分钟回公寓</small></span></li>
   </ul>
+  <div class="note"><b>为什么不去贵船：</b>贵船在京都最北的山里，加进去全天车程要多 1.5 小时，而且会把岚山挤到傍晚、小火车只能赶末班。考虑到同行有不少长辈，这天改成四个点慢慢走，17:00 前就回到大阪。</div>
+  <details class="driver" id="drv8">
+    <summary>🚐 给包车司机的说明</summary>
+    <div class="dsub">12/8 周二 · 12人（长辈较多）· 无大件行李 · 全天约 9 小时</div>
+    <div class="dwrap"><table><tr><th>时间</th><th>地点・安排（括号内为导航用日文地址）</th></tr><tr><td class="t">09:00</td><td><span class="ja">大阪日本橋公寓门口上车，出发去京都</span><span class="zh">大阪市中央区日本橋1丁目4-12</span></td></tr><tr><td class="t">09:50</td><td><span class="ja">到伏见稻荷大社，停车场等候约65分钟</span><span class="zh">京都市伏見区深草藪之内町68</span></td></tr><tr><td class="t">10:55</td><td><span class="ja">从伏见稻荷出发去四条河原町</span></td></tr><tr><td class="t">11:15</td><td><span class="ja">京都髙島屋门口放人即可，大家午餐约80分钟，车在附近找地方等</span><span class="zh">京都市下京区四条通河原町西入真町52</span></td></tr><tr><td class="t">12:35</td><td><span class="ja">在髙島屋附近接人，去清水寺</span></td></tr><tr><td class="t">12:45</td><td><span class="ja">到清水寺，停车场等候约75分钟</span><span class="zh">京都市東山区清水1丁目294</span></td></tr><tr><td class="t">14:05</td><td><span class="ja">从清水寺出发去岚山</span></td></tr><tr><td class="t">14:40</td><td><span class="ja">岚山天龙寺附近放人。大家逛竹林、渡月桥后<b>自己去トロッコ嵯峨站坐小火车</b>，不用再上车</span><span class="zh">京都市右京区嵯峨天龍寺芒ノ馬場町</span></td></tr><tr><td class="t">15:30</td><td><span class="ja"><b>空车先开去龟冈</b>，在トロッコ亀岡站等（务必 16:20 前到）</span><span class="zh">亀岡市篠町馬堀</span></td></tr><tr><td class="t">16:25</td><td><span class="ja">大家坐小火车 16:25 到龟冈站，上车回大阪</span></td></tr><tr><td class="t">18:00</td><td><span class="ja">送到つるとんたん 宗右卫门町店门口，结束</span><span class="zh">大阪市中央区宗右衛門町3-17</span></td></tr></table></div>
+    <div class="dfoot"><button class="copybtn" data-copy="drv8">📋 复制文字发给司机</button><small>小火车 16:02 嵯峨发、16:25 龟冈到，司机务必 16:20 前到龟冈站。</small></div>
+    <textarea hidden id="drv8-txt">【12月8日 周二 · 京都包车一天】12人，长辈较多，没有大件行李，全天约9小时
+09:00 大阪日本橋公寓门口上车，出发去京都（大阪市中央区日本橋1丁目4-12）
+09:50 到伏见稻荷大社，停车场等候约65分钟（京都市伏見区深草藪之内町68）
+10:55 从伏见稻荷出发去四条河原町
+11:15 京都髙島屋门口放人即可，大家午餐约80分钟，车在附近找地方等（京都市下京区四条通河原町西入真町52）
+12:35 在髙島屋附近接人，去清水寺
+12:45 到清水寺，停车场等候约75分钟（京都市東山区清水1丁目294）
+14:05 从清水寺出发去岚山
+14:40 岚山天龙寺附近放人。大家逛竹林、渡月桥后自己去トロッコ嵯峨站坐小火车，不用再上车（京都市右京区嵯峨天龍寺芒ノ馬場町）
+15:30 空车先开去龟冈，在トロッコ亀岡站等（务必 16:20 前到）（亀岡市篠町馬堀）
+16:25 大家坐小火车 16:25 到龟冈站，上车回大阪
+18:00 送到つるとんたん 宗右卫门町店门口，结束（大阪市中央区宗右衛門町3-17）
+※ 小火车 16:02 嵯峨发、16:25 龟冈到，司机务必 16:20 前到龟冈站。</textarea>
+  </details>
   </div>
 </section>
 
 <section class="day o" id="d9">
   <div class="day-head"><span class="d display">12/9</span><span class="w">周三<br>Wed</span><span class="t">神户・梅田 🥩</span></div>
   <div class="day-body">
+  <div class="mapbox"><svg class="route-map" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="当日路线示意图">
+<rect x="0" y="0" width="640" height="300" rx="16" fill="var(--map-bg)"/>
+<line x1="0" y1="0" x2="0" y2="300" stroke="var(--map-grid)"/>
+<line x1="40" y1="0" x2="40" y2="300" stroke="var(--map-grid)"/>
+<line x1="80" y1="0" x2="80" y2="300" stroke="var(--map-grid)"/>
+<line x1="120" y1="0" x2="120" y2="300" stroke="var(--map-grid)"/>
+<line x1="160" y1="0" x2="160" y2="300" stroke="var(--map-grid)"/>
+<line x1="200" y1="0" x2="200" y2="300" stroke="var(--map-grid)"/>
+<line x1="240" y1="0" x2="240" y2="300" stroke="var(--map-grid)"/>
+<line x1="280" y1="0" x2="280" y2="300" stroke="var(--map-grid)"/>
+<line x1="320" y1="0" x2="320" y2="300" stroke="var(--map-grid)"/>
+<line x1="360" y1="0" x2="360" y2="300" stroke="var(--map-grid)"/>
+<line x1="400" y1="0" x2="400" y2="300" stroke="var(--map-grid)"/>
+<line x1="440" y1="0" x2="440" y2="300" stroke="var(--map-grid)"/>
+<line x1="480" y1="0" x2="480" y2="300" stroke="var(--map-grid)"/>
+<line x1="520" y1="0" x2="520" y2="300" stroke="var(--map-grid)"/>
+<line x1="560" y1="0" x2="560" y2="300" stroke="var(--map-grid)"/>
+<line x1="600" y1="0" x2="600" y2="300" stroke="var(--map-grid)"/>
+<line x1="0" y1="0" x2="640" y2="0" stroke="var(--map-grid)"/>
+<line x1="0" y1="40" x2="640" y2="40" stroke="var(--map-grid)"/>
+<line x1="0" y1="80" x2="640" y2="80" stroke="var(--map-grid)"/>
+<line x1="0" y1="120" x2="640" y2="120" stroke="var(--map-grid)"/>
+<line x1="0" y1="160" x2="640" y2="160" stroke="var(--map-grid)"/>
+<line x1="0" y1="200" x2="640" y2="200" stroke="var(--map-grid)"/>
+<line x1="0" y1="240" x2="640" y2="240" stroke="var(--map-grid)"/>
+<line x1="0" y1="280" x2="640" y2="280" stroke="var(--map-grid)"/>
+<path d="M56.0,122.0 L232.0,178.0 L408.0,122.0 L584.0,178.0" fill="none" stroke="var(--osaka)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="1 9" opacity=".9"/>
+<circle cx="56.0" cy="122.0" r="14" fill="var(--osaka)" stroke="#fff" stroke-width="3"/>
+<text x="56.0" y="127.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">1</text>
+<text x="56.0" y="158.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">日本桥公寓</text>
+<circle cx="232.0" cy="178.0" r="14" fill="var(--osaka)" stroke="#fff" stroke-width="3"/>
+<text x="232.0" y="183.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">2</text>
+<text x="232.0" y="154.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">神户三宫 · Ishida 午餐</text>
+<circle cx="408.0" cy="122.0" r="14" fill="var(--osaka)" stroke="#fff" stroke-width="3"/>
+<text x="408.0" y="127.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">3</text>
+<text x="408.0" y="158.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">梅田购物 · 備長晚餐</text>
+<circle cx="584.0" cy="178.0" r="14" fill="var(--osaka)" stroke="#fff" stroke-width="3"/>
+<text x="584.0" y="183.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">4</text>
+<text x="584.0" y="154.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">回日本桥</text>
+</svg><div class="maprow"><span class="muted">电车往返，不用包车</span><a class="btn" href="https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%A9%8B%E9%A7%85%20%E5%A4%A7%E9%98%AA/%E7%A5%9E%E6%88%B8%E7%89%9B%E3%82%B9%E3%83%86%E3%83%BC%E3%82%ADIshida%20%E6%9C%AC%E5%BA%97/%E5%A4%A7%E9%98%AA%E9%A7%85/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E5%A4%A7%E9%98%AA/%E6%97%A5%E6%9C%AC%E6%A9%8B%E9%A7%85%20%E5%A4%A7%E9%98%AA" target="_blank" rel="noopener">🗺️ 在 Google Maps 打开路线</a></div></div>
   <ul class="tl">
     <li><span class="time">上午</span><span class="what">前往神户三宫<small>阪神电车约45分钟，或 JR 大阪站→三宫约25分钟</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚆 阪神电车 难波 → 神户三宫 约45分钟；或 JR 大阪站 → 三宫 新快速约25分钟</span></li>
     <li><span class="time">中午</span><span class="what"><span class="tag meal">午餐</span>神戸牛ステーキ Ishida. 本店<small>兵庫県神戸市中央区北長狭通1丁目21-21 TAKAIビル 3F · <a href="tel:+81785997779">+81 78-599-7779</a> · kobe-ishidaya.com</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/hpNrJRJFoysVZpJDA?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/hpNrJRJFoysVZpJDA?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚆 JR 三宫 → 大阪站 新快速约25分钟</span></li>
     <li><span class="time">下午</span><span class="what">JR 三宫 → 大阪站，梅田购物 🛍️<small>Grand Front Osaka、阪急百货、LUCUA 都在大阪站周边</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚶 大阪站 → Grand Front Osaka 直结，步行约5分钟</span></li>
     <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>ひつまぶし 名古屋 備長 グランフロント大阪店（鳗鱼饭）<small>Grand Front Osaka 内，大阪站直结</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/nE53cxRLayAuAmuU8?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/nE53cxRLayAuAmuU8?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚇 御堂筋线 梅田 → 难波 约10分钟，再步行约8分钟回公寓</span></li>
     <li><span class="time">饭后</span><span class="what">御堂筋线 梅田 → 难波，回日本橋公寓</span></li>
   </ul>
   </div>
@@ -242,47 +386,217 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
 <section class="day h" id="d10">
   <div class="day-head"><span class="d display">12/10</span><span class="w">周四<br>Thu</span><span class="t">大阪 → 箱根 🚄</span></div>
   <div class="day-body">
+  <div class="mapbox"><svg class="route-map" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="当日路线示意图">
+<rect x="0" y="0" width="640" height="300" rx="16" fill="var(--map-bg)"/>
+<line x1="0" y1="0" x2="0" y2="300" stroke="var(--map-grid)"/>
+<line x1="40" y1="0" x2="40" y2="300" stroke="var(--map-grid)"/>
+<line x1="80" y1="0" x2="80" y2="300" stroke="var(--map-grid)"/>
+<line x1="120" y1="0" x2="120" y2="300" stroke="var(--map-grid)"/>
+<line x1="160" y1="0" x2="160" y2="300" stroke="var(--map-grid)"/>
+<line x1="200" y1="0" x2="200" y2="300" stroke="var(--map-grid)"/>
+<line x1="240" y1="0" x2="240" y2="300" stroke="var(--map-grid)"/>
+<line x1="280" y1="0" x2="280" y2="300" stroke="var(--map-grid)"/>
+<line x1="320" y1="0" x2="320" y2="300" stroke="var(--map-grid)"/>
+<line x1="360" y1="0" x2="360" y2="300" stroke="var(--map-grid)"/>
+<line x1="400" y1="0" x2="400" y2="300" stroke="var(--map-grid)"/>
+<line x1="440" y1="0" x2="440" y2="300" stroke="var(--map-grid)"/>
+<line x1="480" y1="0" x2="480" y2="300" stroke="var(--map-grid)"/>
+<line x1="520" y1="0" x2="520" y2="300" stroke="var(--map-grid)"/>
+<line x1="560" y1="0" x2="560" y2="300" stroke="var(--map-grid)"/>
+<line x1="600" y1="0" x2="600" y2="300" stroke="var(--map-grid)"/>
+<line x1="0" y1="0" x2="640" y2="0" stroke="var(--map-grid)"/>
+<line x1="0" y1="40" x2="640" y2="40" stroke="var(--map-grid)"/>
+<line x1="0" y1="80" x2="640" y2="80" stroke="var(--map-grid)"/>
+<line x1="0" y1="120" x2="640" y2="120" stroke="var(--map-grid)"/>
+<line x1="0" y1="160" x2="640" y2="160" stroke="var(--map-grid)"/>
+<line x1="0" y1="200" x2="640" y2="200" stroke="var(--map-grid)"/>
+<line x1="0" y1="240" x2="640" y2="240" stroke="var(--map-grid)"/>
+<line x1="0" y1="280" x2="640" y2="280" stroke="var(--map-grid)"/>
+<path d="M56.0,122.0 L188.0,178.0 L320.0,122.0 L452.0,178.0 L584.0,122.0" fill="none" stroke="var(--hakone)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="1 9" opacity=".9"/>
+<circle cx="56.0" cy="122.0" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="56.0" y="127.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">1</text>
+<text x="56.0" y="158.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">黑门市场</text>
+<circle cx="188.0" cy="178.0" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="188.0" y="183.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">2</text>
+<text x="188.0" y="154.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">公寓取行李</text>
+<circle cx="320.0" cy="122.0" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="320.0" y="127.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">3</text>
+<text x="320.0" y="158.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">新大阪站</text>
+<circle cx="452.0" cy="178.0" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="452.0" y="183.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">4</text>
+<text x="452.0" y="154.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">小田原站</text>
+<circle cx="584.0" cy="122.0" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="584.0" y="127.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">5</text>
+<text x="584.0" y="158.0" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">山之酒店</text>
+</svg><div class="maprow"><span class="muted">新大阪→小田原坐新干线，其余坐车</span><a class="btn" href="https://www.google.com/maps/dir/%E9%BB%92%E9%96%80%E5%B8%82%E5%A0%B4/%E6%96%B0%E5%A4%A7%E9%98%AA%E9%A7%85/%E5%B0%8F%E7%94%B0%E5%8E%9F%E9%A7%85/%E5%B0%8F%E7%94%B0%E6%80%A5%20%E5%B1%B1%E3%81%AE%E3%83%9B%E3%83%86%E3%83%AB" target="_blank" rel="noopener">🗺️ 在 Google Maps 打开路线</a></div></div>
   <ul class="tl">
     <li><span class="time">上午</span><span class="what">黑門市场 🍣 边逛边吃<small>从公寓步行约3分钟，就在日本橋站旁；鲜鱼、和牛串、生蘑、水果，建议 10:00 前到人少<br>行李留在公寓</small></span></li>
     <li><span class="time">12:00</span><span class="what"><span class="tag meal">午餐</span>黑門市场内自由解决<small>各摄各的，不用订座</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚶 黑门市场 → 公寓 步行约3分钟</span></li>
     <li><span class="time">13:00</span><span class="what">回公寓取行李，打车 / 包车 → 新大阪站<small>约20–30分钟；12人带行李约需 2–3 辆出租车或一辆包车</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚕 日本橋 → 新大阪站 约25分钟</span></li>
     <li><span class="time">14:00</span><span class="what">新干线 新大阪 → 小田原 <span class="tag tbd">未订票</span><small>东海道新干线约2小时10分；Hikari 部分班次直达小田原，Nozomi 不停小田原</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚄 新大阪 → 小田原 约2小时10分（Hikari 直达）</span></li>
     <li><span class="time">16:15</span><span class="what">小田原 → 箱根山之酒店<small>箱根登山巴士约50分钟，或包车/出租车</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚌 小田原 → 元箱根 登山巴士约50分钟；包车约40分钟</span></li>
     <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>酒店内（已含）♨️<small>温泉酒店晚餐分时段，到店后尽早确认</small></span></li>
   </ul>
   <div class="note"><b>注意：</b>Airbnb 退房时间是 10:00，饭后回去取行李需提前和房东 Masayuki 确认可延迟取行李或寄存。</div>
+  <details class="driver" id="drv10">
+    <summary>🚐 给包车司机的说明</summary>
+    <div class="dsub">12/10 周四 · 12人 · 大件行李多（每人一个箱子）· 需要大车</div>
+    <div class="dwrap"><table><tr><th>时间</th><th>地点・安排（括号内为导航用日文地址）</th></tr><tr><td class="t">13:00</td><td><span class="ja">大阪日本橋公寓门口上车、装行李</span><span class="zh">大阪市中央区日本橋1丁目4-12</span></td></tr><tr><td class="t">13:30</td><td><span class="ja">新大阪站新干线口放人，结束（我们坐 14:00 左右的新干线）</span><span class="zh">新大阪駅 新幹線口</span></td></tr><tr><td class="t">另选</td><td><span class="ja"><b>（如果小田原那段也包车）</b>16:15 小田原站东口接人，送到小田急 箱根山之酒店，约40分钟</span><span class="zh">小田急 山のホテル：箱根町元箱根80</span></td></tr></table></div>
+    <div class="dfoot"><button class="copybtn" data-copy="drv10">📋 复制文字发给司机</button><small>新干线约 16:10 到小田原；小田原到酒店若不包车就坐登山巴士。</small></div>
+    <textarea hidden id="drv10-txt">【12月10日 周四 · 公寓送新大阪站】12人，每人一个行李箱，需要大车
+13:00 大阪日本橋公寓门口上车、装行李（大阪市中央区日本橋1丁目4-12）
+13:30 新大阪站新干线口放人，结束（我们坐 14:00 左右的新干线）（新大阪駅 新幹線口）
+另选 （如果小田原那段也包车）16:15 小田原站东口接人，送到小田急 箱根山之酒店，约40分钟（小田急 山のホテル：箱根町元箱根80）
+※ 新干线约 16:10 到小田原；小田原到酒店若不包车就坐登山巴士。</textarea>
+  </details>
   </div>
 </section>
 
 <section class="day h" id="d11">
-  <div class="day-head"><span class="d display">12/11</span><span class="w">周五<br>Fri</span><span class="t">箱根一日 → 东京 🗻</span></div>
+  <div class="day-head"><span class="d display">12/11</span><span class="w">周五<br>Fri</span><span class="t">箱根半日 → 东京 🗻</span></div>
   <div class="day-body">
-  <p class="muted">倒序路线：行李全程寄存酒店，最后一站回到酒店附近，空手坐船和缆车。</p>
+  <div class="mapbox"><svg class="route-map" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="当日路线示意图">
+<rect x="0" y="0" width="640" height="300" rx="16" fill="var(--map-bg)"/>
+<line x1="0" y1="0" x2="0" y2="300" stroke="var(--map-grid)"/>
+<line x1="40" y1="0" x2="40" y2="300" stroke="var(--map-grid)"/>
+<line x1="80" y1="0" x2="80" y2="300" stroke="var(--map-grid)"/>
+<line x1="120" y1="0" x2="120" y2="300" stroke="var(--map-grid)"/>
+<line x1="160" y1="0" x2="160" y2="300" stroke="var(--map-grid)"/>
+<line x1="200" y1="0" x2="200" y2="300" stroke="var(--map-grid)"/>
+<line x1="240" y1="0" x2="240" y2="300" stroke="var(--map-grid)"/>
+<line x1="280" y1="0" x2="280" y2="300" stroke="var(--map-grid)"/>
+<line x1="320" y1="0" x2="320" y2="300" stroke="var(--map-grid)"/>
+<line x1="360" y1="0" x2="360" y2="300" stroke="var(--map-grid)"/>
+<line x1="400" y1="0" x2="400" y2="300" stroke="var(--map-grid)"/>
+<line x1="440" y1="0" x2="440" y2="300" stroke="var(--map-grid)"/>
+<line x1="480" y1="0" x2="480" y2="300" stroke="var(--map-grid)"/>
+<line x1="520" y1="0" x2="520" y2="300" stroke="var(--map-grid)"/>
+<line x1="560" y1="0" x2="560" y2="300" stroke="var(--map-grid)"/>
+<line x1="600" y1="0" x2="600" y2="300" stroke="var(--map-grid)"/>
+<line x1="0" y1="0" x2="640" y2="0" stroke="var(--map-grid)"/>
+<line x1="0" y1="40" x2="640" y2="40" stroke="var(--map-grid)"/>
+<line x1="0" y1="80" x2="640" y2="80" stroke="var(--map-grid)"/>
+<line x1="0" y1="120" x2="640" y2="120" stroke="var(--map-grid)"/>
+<line x1="0" y1="160" x2="640" y2="160" stroke="var(--map-grid)"/>
+<line x1="0" y1="200" x2="640" y2="200" stroke="var(--map-grid)"/>
+<line x1="0" y1="240" x2="640" y2="240" stroke="var(--map-grid)"/>
+<line x1="0" y1="280" x2="640" y2="280" stroke="var(--map-grid)"/>
+<path d="M365.6,234.5 L310.4,210.6 L323.6,254.6 L286.5,116.8 L331.9,109.8 L340.4,56.0" fill="none" stroke="var(--hakone)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="1 9" opacity=".9"/>
+<circle cx="365.6" cy="234.5" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="365.6" y="239.5" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">1</text>
+<text x="387.6" y="239.5" text-anchor="start" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">山之酒店</text>
+<circle cx="310.4" cy="210.6" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="310.4" y="215.6" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">2</text>
+<text x="288.4" y="215.6" text-anchor="end" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">箱根神社</text>
+<circle cx="323.6" cy="254.6" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="323.6" y="259.6" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">3</text>
+<text x="323.6" y="290.6" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">元箱根港</text>
+<circle cx="286.5" cy="116.8" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="286.5" y="121.8" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">4</text>
+<text x="264.5" y="121.8" text-anchor="end" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">桃源台港</text>
+<circle cx="331.9" cy="109.8" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="331.9" y="114.8" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">5</text>
+<text x="353.9" y="114.8" text-anchor="start" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">大涌谷</text>
+<circle cx="340.4" cy="56.0" r="14" fill="var(--hakone)" stroke="#fff" stroke-width="3"/>
+<text x="340.4" y="61.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">6</text>
+<text x="362.4" y="61.0" text-anchor="start" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">玻璃之森</text>
+</svg><div class="maprow"><span class="muted">元箱根港→桃源台港坐船，最后回酒店取行李去东京</span><a class="btn" href="https://www.google.com/maps/dir/%E5%B0%8F%E7%94%B0%E6%80%A5%20%E5%B1%B1%E3%81%AE%E3%83%9B%E3%83%86%E3%83%AB/%E7%AE%B1%E6%A0%B9%E7%A5%9E%E7%A4%BE/%E5%85%83%E7%AE%B1%E6%A0%B9%E6%B8%AF/%E6%A1%83%E6%BA%90%E5%8F%B0%E6%B8%AF/%E5%A4%A7%E6%B6%8C%E8%B0%B7/%E7%AE%B1%E6%A0%B9%E3%82%AC%E3%83%A9%E3%82%B9%E3%81%AE%E6%A3%AE%E7%BE%8E%E8%A1%93%E9%A4%A8/%E5%B0%8F%E7%94%B0%E6%80%A5%20%E5%B1%B1%E3%81%AE%E3%83%9B%E3%83%86%E3%83%AB/%E6%96%B0%E5%A4%A7%E4%B9%85%E4%BF%9D%E9%A7%85" target="_blank" rel="noopener">🗺️ 在 Google Maps 打开路线</a></div></div>
+  <p class="muted">轻松版：只走芦之湖一圈，行李全程寄存酒店，下午早点出发去东京。</p>
   <ul class="tl">
     <li><span class="time">07:30</span><span class="what"><span class="tag meal">早餐</span>酒店内（已含）</span></li>
-    <li><span class="time">09:00</span><span class="what">退房，行李寄存前台，包车出发</span></li>
-    <li><span class="time">10:00</span><span class="what">忍野八海（约40分钟）</span></li>
-    <li><span class="time">11:00</span><span class="what">山中湖 白鸟滨（约20分钟）</span></li>
-    <li><span class="time">12:00</span><span class="what">大涌谷（约50分钟）🥚<small><span class="tag meal">午餐</span><span class="tag tbd">待定</span> 黑玉子、简餐</small></span></li>
-    <li><span class="time">13:00</span><span class="what">箱根空中缆车 大涌谷 → 桃源台 🚡</span></li>
-    <li><span class="time">13:40</span><span class="what">箱根海盗船 桃源台港 → 元箱根港（约30分钟，自费）⛵</span></li>
-    <li><span class="time">14:30</span><span class="what">箱根神社 & 芦之湖水上鸟居（约60分钟）⛩️</span></li>
-    <li><span class="time">15:30</span><span class="what">步行回酒店取行李</span></li>
-    <li><span class="time">16:30</span><span class="what">包车出发 → 新宿 Airbnb，约18:30–19:00 到</span></li>
-    <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>拉面 🍜 四选一<small>一兰 新宿歌舞伎町店：步行约12分钟，24小时，单人隔间，晚高峰常排队30分钟以上<br>一兰 西新宿店：小滝橋通，步行约10分钟，人少，营业到凌晨 6:00<br>龙之家 新宿小滝橋通店：步行约10分钟，豚骨拉面、沾面都好，排队快，<b>22:00 关门</b><br>麺屋 优作（Ramen Yusaku）：就在百人町2丁目，步行3分钟，社区小店，<b>20:00 关门</b>，周三休息，要去得赶在到 Airbnb 后立刻出门</small><span class="links"><a class="btn" href="https://maps.google.com/?cid=17641287503749035709" target="_blank" rel="noopener">📍 一兰 歌舞伎町</a><a class="btn" href="https://maps.google.com/?cid=14975794739318295185" target="_blank" rel="noopener">📍 一兰 西新宿</a><a class="btn" href="https://maps.google.com/?cid=9924090625503313076" target="_blank" rel="noopener">📍 龙之家</a><a class="btn" href="https://maps.google.com/?cid=3542904572622005124" target="_blank" rel="noopener">📍 优作</a></span></span></li>
+    <li><span class="time">09:30</span><span class="what">退房，行李寄存前台<small>包车先空车开去桃源台港等</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚶 酒店 → 箱根神社 步行约8分钟，经酒店花园小路</span></li>
+    <li><span class="time">10:00</span><span class="what">箱根神社 & 芦之湖水上鸟居（60分钟）⛩️<small>从酒店步行几分钟，上午人少，鸟居排队拍照短</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚶 神社 → 元箱根港 步行约5分钟</span></li>
+    <li><span class="time">11:10</span><span class="what">箱根海盗船 元箱根港 → 桃源台港（约30分钟）⛵<small>单程成人 ¥1,700，特别船室另加 ¥800；船上有暖气室内座位</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">⛵ 约30分钟，包车已在桃源台港等</span></li>
+    <li><span class="time">11:45</span><span class="what">桃源台港上车 → 大涌谷（约15分钟）<small>不坐缆车，省钱也不怕大风停运；想坐缆车的人可自行坐 桃源台 → 大涌谷（约 ¥1,500–1,600/人），在大涌谷会合</small></span></li>
+    <li><span class="time">12:00</span><span class="what">大涌谷（90分钟）🥚<small><span class="tag meal">午餐</span>大涌谷站楼上有餐厅和轻食，黑玉子</small></span></li>
+    <li><span class="time">13:30</span><span class="what">午餐后分两组 👥<small><b>A 组</b>（想看玻璃之森）：13:45 到箱根玻璃之森美术馆，参观约60–75分钟。门票成人 ¥1,800，65岁以上 ¥1,700，网上预售 ¥1,600；17:00 停止入馆<br><b>B 组</b>（其他人）：14:15 回酒店，大堂喝咖啡或湖边散步休息</small><span class="links"><a class="btn" href="https://www.hakone-garasunomori.jp/" target="_blank" rel="noopener">🎫 玻璃之森官网</a></span></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚗 大涌谷 → 玻璃之森 约15分钟；玻璃之森 → 酒店 约25–30分钟</span></li>
+    <li><span class="time">15:00</span><span class="what">包车回玻璃之森接 A 组 → 15:30 回酒店会合，取行李</span></li>
+    <li><span class="time">15:30</span><span class="what">包车出发 → 新宿 Airbnb，约17:30–18:00 到</span></li>
+    <li class="go"><span class="time"></span><span class="what">🚗 箱根 → 新宿 约2小时（东名高速，视路况）</span></li>
+    <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>拉面 🍜 四选一<small>一兰 新宿歌舞伎町店：步行约12分钟，24小时，单人隔间，晚高峰常排队30分钟以上<br>一兰 西新宿店：小滝桥通，步行约10分钟，人少，营业到凌晨 6:00<br>龙之家 新宿小滝桥通店：步行约10分钟，豚骨拉面、沾面都好，排队快，<b>22:00 关门</b><br>麺屋 优作（Ramen Yusaku）：就在百人町2丁目，步行3分钟，社区小店，<b>20:00 关门</b>，周三休息</small><span class="links"><a class="btn" href="https://maps.google.com/?cid=17641287503749035709" target="_blank" rel="noopener">📍 一兰 歌舞伎町</a><a class="btn" href="https://maps.google.com/?cid=14975794739318295185" target="_blank" rel="noopener">📍 一兰 西新宿</a><a class="btn" href="https://maps.google.com/?cid=9924090625503313076" target="_blank" rel="noopener">📍 龙之家</a><a class="btn" href="https://maps.google.com/?cid=3542904572622005124" target="_blank" rel="noopener">📍 优作</a></span></span></li>
   </ul>
-  <div class="note"><b>包车司机要点：</b>上午送到忍野八海 → 中午到大涌谷接 → 车直接开回元箱根酒店等人 → 送新宿。</div>
+  <details class="driver" id="drv11">
+    <summary>🚐 给包车司机的说明</summary>
+    <div class="dsub">12/11 周五 · 12人 · 行李寄存酒店到 15:30 才上车 · 全天约 8.5 小时</div>
+    <div class="dwrap"><table><tr><th>时间</th><th>地点・安排（括号内为导航用日文地址）</th></tr><tr><td class="t">09:30</td><td><span class="ja">从酒店出发，<b>不载人，空车</b>先开去桃源台港</span><span class="zh">小田急 山のホテル：箱根町元箱根80 → 桃源台港：箱根町元箱根164</span></td></tr><tr><td class="t">11:40</td><td><span class="ja">在桃源台港停车场等候，大家坐海盗船从元箱根港过来</span></td></tr><tr><td class="t">11:45</td><td><span class="ja">桃源台港接人，去大涌谷</span></td></tr><tr><td class="t">12:00</td><td><span class="ja">到大涌谷，等候约90分钟</span><span class="zh">箱根町仙石原1251</span></td></tr><tr><td class="t">13:30</td><td><span class="ja">大涌谷出发，分两处放人</span></td></tr><tr><td class="t">13:45</td><td><span class="ja">箱根玻璃之森美术馆放下 <b>A 组</b></span><span class="zh">箱根ガラスの森美術館：箱根町仙石原940-48</span></td></tr><tr><td class="t">14:15</td><td><span class="ja">酒店放下 <b>B 组</b>，在酒店附近等</span></td></tr><tr><td class="t">15:00</td><td><span class="ja">回玻璃之森接 A 组，送回酒店</span></td></tr><tr><td class="t">15:30</td><td><span class="ja">酒店全员集合、装行李</span></td></tr><tr><td class="t">15:40</td><td><span class="ja">出发去东京新宿百人町 Airbnb（JR新大久保站步行3分钟），约 17:30–18:00 到，结束</span><span class="zh">東京都新宿区百人町2丁目12-16</span></td></tr></table></div>
+    <div class="dfoot"><button class="copybtn" data-copy="drv11">📋 复制文字发给司机</button><small>备选：A 组参观完自己打车回酒店（约25分钟，¥4,000–5,000/车），司机就不用 15:00 再跑一趟。</small></div>
+    <textarea hidden id="drv11-txt">【12月11日 周五 · 箱根包车半天，再送东京】12人，行李寄存酒店，15:30 才上车，全天约8.5小时
+09:30 从酒店出发，不载人，空车先开去桃源台港（小田急 山のホテル：箱根町元箱根80 → 桃源台港：箱根町元箱根164）
+11:40 在桃源台港停车场等候，大家坐海盗船从元箱根港过来
+11:45 桃源台港接人，去大涌谷
+12:00 到大涌谷，等候约90分钟（箱根町仙石原1251）
+13:30 大涌谷出发，分两处放人
+13:45 箱根玻璃之森美术馆放下 A 组（箱根ガラスの森美術館：箱根町仙石原940-48）
+14:15 酒店放下 B 组，在酒店附近等
+15:00 回玻璃之森接 A 组，送回酒店
+15:30 酒店全员集合、装行李
+15:40 出发去东京新宿百人町 Airbnb（JR新大久保站步行3分钟），约 17:30–18:00 到，结束（東京都新宿区百人町2丁目12-16）
+※ 备选：A 组参观完自己打车回酒店（约25分钟，¥4,000–5,000/车），司机就不用 15:00 再跑一趟。</textarea>
+  </details>
   </div>
 </section>
 
 <section class="day t" id="d12">
   <div class="day-head"><span class="d display">12/12</span><span class="w">周六<br>Sat</span><span class="t">涩谷・新宿 🌆</span></div>
   <div class="day-body">
+  <div class="mapbox"><svg class="route-map" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="当日路线示意图">
+<rect x="0" y="0" width="640" height="300" rx="16" fill="var(--map-bg)"/>
+<line x1="0" y1="0" x2="0" y2="300" stroke="var(--map-grid)"/>
+<line x1="40" y1="0" x2="40" y2="300" stroke="var(--map-grid)"/>
+<line x1="80" y1="0" x2="80" y2="300" stroke="var(--map-grid)"/>
+<line x1="120" y1="0" x2="120" y2="300" stroke="var(--map-grid)"/>
+<line x1="160" y1="0" x2="160" y2="300" stroke="var(--map-grid)"/>
+<line x1="200" y1="0" x2="200" y2="300" stroke="var(--map-grid)"/>
+<line x1="240" y1="0" x2="240" y2="300" stroke="var(--map-grid)"/>
+<line x1="280" y1="0" x2="280" y2="300" stroke="var(--map-grid)"/>
+<line x1="320" y1="0" x2="320" y2="300" stroke="var(--map-grid)"/>
+<line x1="360" y1="0" x2="360" y2="300" stroke="var(--map-grid)"/>
+<line x1="400" y1="0" x2="400" y2="300" stroke="var(--map-grid)"/>
+<line x1="440" y1="0" x2="440" y2="300" stroke="var(--map-grid)"/>
+<line x1="480" y1="0" x2="480" y2="300" stroke="var(--map-grid)"/>
+<line x1="520" y1="0" x2="520" y2="300" stroke="var(--map-grid)"/>
+<line x1="560" y1="0" x2="560" y2="300" stroke="var(--map-grid)"/>
+<line x1="600" y1="0" x2="600" y2="300" stroke="var(--map-grid)"/>
+<line x1="0" y1="0" x2="640" y2="0" stroke="var(--map-grid)"/>
+<line x1="0" y1="40" x2="640" y2="40" stroke="var(--map-grid)"/>
+<line x1="0" y1="80" x2="640" y2="80" stroke="var(--map-grid)"/>
+<line x1="0" y1="120" x2="640" y2="120" stroke="var(--map-grid)"/>
+<line x1="0" y1="160" x2="640" y2="160" stroke="var(--map-grid)"/>
+<line x1="0" y1="200" x2="640" y2="200" stroke="var(--map-grid)"/>
+<line x1="0" y1="240" x2="640" y2="240" stroke="var(--map-grid)"/>
+<line x1="0" y1="280" x2="640" y2="280" stroke="var(--map-grid)"/>
+<path d="M310.1,53.3 L310.5,263.7 L305.5,218.0 L334.0,92.5" fill="none" stroke="var(--tokyo)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="1 9" opacity=".9"/>
+<circle cx="310.1" cy="53.3" r="14" fill="var(--tokyo)" stroke="#fff" stroke-width="3"/>
+<text x="310.1" y="58.3" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">1</text>
+<text x="288.1" y="58.3" text-anchor="end" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">Airbnb</text>
+<circle cx="310.5" cy="263.7" r="14" fill="var(--tokyo)" stroke="#fff" stroke-width="3"/>
+<text x="310.5" y="268.7" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">2</text>
+<text x="310.5" y="299.7" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">ひろかつ道玄坂</text>
+<circle cx="305.5" cy="218.0" r="14" fill="var(--tokyo)" stroke="#fff" stroke-width="3"/>
+<text x="305.5" y="223.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">3</text>
+<text x="327.5" y="223.0" text-anchor="start" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">MEGA 唐吉诃德</text>
+<circle cx="334.0" cy="92.5" r="14" fill="var(--tokyo)" stroke="#fff" stroke-width="3"/>
+<text x="334.0" y="97.5" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">4</text>
+<text x="356.0" y="97.5" text-anchor="start" font-size="14" font-weight="500" fill="var(--ink)" stroke="var(--map-bg)" stroke-width="4" paint-order="stroke">磯丸水産 歌舞伎町</text>
+</svg><div class="maprow"><span class="muted">新大久保⇄涩谷坐 JR 山手线</span><a class="btn" href="https://www.google.com/maps/dir/%E6%96%B0%E5%A4%A7%E4%B9%85%E4%BF%9D%E9%A7%85/%E5%A4%A7%E8%A1%86%E5%B1%85%E9%85%92%E5%B1%8B%20%E3%81%B2%E3%82%8D%E3%81%8B%E3%81%A4%20%E6%B8%8B%E8%B0%B7%E9%81%93%E7%8E%84%E5%9D%82%E5%BA%97/MEGA%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%E6%B8%8B%E8%B0%B7%E6%9C%AC%E5%BA%97/%E7%A3%AF%E4%B8%B8%E6%B0%B4%E7%94%A3%20%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA%E6%9D%B1%E9%80%9A%E3%82%8A%E5%BA%97/%E6%96%B0%E5%A4%A7%E4%B9%85%E4%BF%9D%E9%A7%85" target="_blank" rel="noopener">🗺️ 在 Google Maps 打开路线</a></div></div>
   <ul class="tl">
     <li><span class="time">上午</span><span class="what">JR 山手线 新大久保 → 涩谷，约15分钟</span></li>
+    <li class="go"><span class="time"></span><span class="what">🚶 涩谷站 → ひろかつ道玄坂 步行约5分钟</span></li>
     <li><span class="time">中午</span><span class="what"><span class="tag meal">午餐</span>大衆居酒屋 ひろかつ 渋谷道玄坂店<span class="links"><a class="btn" href="https://maps.app.goo.gl/GFHcTq9oGcYCqmpu8?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/GFHcTq9oGcYCqmpu8?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚶 道玄坂 → MEGA 唐吉诃德 步行约5分钟</span></li>
     <li><span class="time">下午</span><span class="what">涩谷逛街 🛍️<small>Scramble Square、PARCO、109、宫下公园</small></span></li>
+    <li><span class="time">下午</span><span class="what">MEGA 唐吉诃德 涩谷本店 🐧<small>28-6 Udagawachō, Shibuya · 24小时营业，7层楼，免税柜台在 7樓，记得带护照；下午 4 点前人少，晚上 8 点后很挤</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/iBQvsUMHJw6vn4gu9?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a></span></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚆 JR 山手线 涩谷 → 新大久保 约15分钟，再步行3分钟</span></li>
     <li><span class="time">傍晚</span><span class="what">回 Airbnb 休息</span></li>
+    <li class="go"><span class="time"></span><span class="what">🚶 Airbnb → 歌舞伎町 步行约15分钟，或新大久保坐一站到新宿</span></li>
     <li><span class="time">晚上</span><span class="what"><span class="tag meal">晚餐</span>磯丸水産 歌舞伎町東通り店（海鲜居酒屋）🐟<small>24小时营业，随到随吃，12人可能分桌</small><span class="links"><a class="btn" href="https://maps.app.goo.gl/eDEb2EqaXFjPhpwYA?g_st=ic" target="_blank" rel="noopener">📍 Google Maps</a><a class="btn" href="https://maps.app.goo.gl/eDEb2EqaXFjPhpwYA?g_st=ic" target="_blank" rel="noopener">📷 查看照片</a></span></span></li>
     <li><span class="time">饭后</span><span class="what">歌舞伎町一带闲逛，步行约15分钟回 Airbnb</span></li>
   </ul>
@@ -292,32 +606,55 @@ footer{margin-top:50px;color:var(--ink-2);font-size:13px;text-align:center}
 <section class="day t" id="d13">
   <div class="day-head"><span class="d display">12/13</span><span class="w">周日<br>Sun</span><span class="t">回程 🛫</span></div>
   <div class="day-body">
+  <div class="mapbox"><div class="maprow"><span class="muted">包车直达成田 T1</span><a class="btn" href="https://www.google.com/maps/dir/%E6%96%B0%E5%A4%A7%E4%B9%85%E4%BF%9D%E9%A7%85/%E6%88%90%E7%94%B0%E7%A9%BA%E6%B8%AF%20%E7%AC%AC1%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">🗺️ 在 Google Maps 打开路线</a></div></div>
   <ul class="tl">
     <li><span class="time">早上</span><span class="what"><span class="tag meal">早餐</span><span class="tag tbd">待定</span><small>Airbnb 附近简单解决</small></span></li>
     <li><span class="time">10:00</span><span class="what">Airbnb 退房</span></li>
     <li><span class="time">10:30</span><span class="what">包车 新宿 → 成田机场 T1 <span class="tag tbd">待安排</span><small>约1.5–2小时，预留起飞前3小时到机场</small></span></li>
+    <li class="go"><span class="time"></span><span class="what">🚗 新宿 → 成田 T1 约1.5–2小时，12:20 前到机场</span></li>
     <li><span class="time">15:20</span><span class="what"><span class="tag plane">香港组 5人</span>HX609 成田 T1 起飞 → 19:55 到香港 T1<small>经济舱含餐</small></span></li>
     <li><span class="time">15:30</span><span class="what"><span class="tag plane">福州组 7人</span>MF810 成田 T1 起飞 → 18:45 到福州长乐 T2<small>福州5人 + 香港组2人 · 两个航班都在 T1，相隔10分钟，12人一起到机场</small></span></li>
   </ul>
+  <details class="driver" id="drv13">
+    <summary>🚐 给包车司机的说明</summary>
+    <div class="dsub">12/13 周日 · 12人 · 大件行李多 · 需要大车</div>
+    <div class="dwrap"><table><tr><th>时间</th><th>地点・安排（括号内为导航用日文地址）</th></tr><tr><td class="t">10:30</td><td><span class="ja">新宿百人町 Airbnb 门口上车、装行李（JR新大久保站步行3分钟）</span><span class="zh">東京都新宿区百人町2丁目12-16</span></td></tr><tr><td class="t">12:20</td><td><span class="ja"><b>12:20 前</b>到成田机场第1航站楼出发层放人，结束</span><span class="zh">成田空港 第1ターミナル 出発ロビー</span></td></tr><tr><td class="t">—</td><td><span class="ja">航班：HX609 15:20 / MF810 15:30，都在 T1</span></td></tr></table></div>
+    <div class="dfoot"><button class="copybtn" data-copy="drv13">📋 复制文字发给司机</button><small>周日上午首都高一般不堵，仍按 2 小时预留。</small></div>
+    <textarea hidden id="drv13-txt">【12月13日 周日 · 新宿送成田机场】12人，行李箱多，需要大车
+10:30 新宿百人町 Airbnb 门口上车、装行李（JR新大久保站步行3分钟）（東京都新宿区百人町2丁目12-16）
+12:20 12:20 前到成田机场第1航站楼出发层放人，结束（成田空港 第1ターミナル 出発ロビー）
+— 航班：HX609 15:20 / MF810 15:30，都在 T1
+※ 周日上午首都高一般不堵，仍按 2 小时预留。</textarea>
+  </details>
   </div>
 </section>
 
 <!-- ============ 待办 ============ -->
 <h2 id="todo" class="display"><span class="emoji">✅</span>待办清单</h2>
 <ul class="todo">
+  <li><div>京都包车：12/8 全天，日本橋 → 伏见 → 四条河原町（放人后另找地方等）→ 清水寺 → 岚山 → 空车到亀岡站接 → 送到宗右衛門町</div></li>
+  <li><div>嵯峨野小火车订票：12/8 下午 嵯峨 → 亀岡 方向，16:02 班次，12张<span>11/8 凌晨 0:00（日本时间）官网开售，12人连座要早订</span></div></li>
   <li><div>新干线订票：12/10 新大阪 → 小田原，12人<span>建议 14:00 左右班次</span></div></li>
-  <li><div>箱根包车：12/11 一日 + 送新宿<span>分段接送：忍野八海 → 大涌谷 → 元箱根酒店 → 新宿</span></div></li>
+  <li><div>箱根包车：12/11 半日 + 送新宿<span>酒店 → 桃源台港接 → 大涌谷 → 玻璃之森/酒店分送 → 接回 → 酒店取行李 → 新宿</span></div></li>
   <li><div>成田包车：12/13 新宿 Airbnb → 成田 T1，10:30 出发</div></li>
   <li><div>预约 Ishida 神户牛 午餐：12/9，12人<span>电话 +81 78-599-7779 或官网；顺便确认周三中午营业</span></div></li>
   <li><div>预约 備長 鳗鱼饭 晚餐：12/9，12人</div></li>
   <li><div>预约 ひろかつ 涩谷 午餐：12/12，12人</div></li>
   <li><div>大阪房东 Masayuki：确认 12/10 午饭后回公寓取行李</div></li>
-  <li><div>东京房东 Yasuki Kimura：告知 12/11 约 19:00 到达</div></li>
+  <li><div>东京房东 Yasuki Kimura：告知 12/11 约 18:00 到达</div></li>
   <li><div>箱根酒店：确认 12/10 预计到达时间和晚餐时段</div></li>
-  <li><div>补充：12/7 晚餐、12/11 午餐、12/13 早餐</div></li>
+  <li><div>玻璃之森预售票：A 组人数确定后在官网买，每人省 ¥200</div></li>
+  <li><div>补充：12/7 晚餐、12/13 早餐</div></li>
 </ul>
 
 <footer>信息根据预订截图整理，交通时间为参考估计 · 行程更新后此页同步更新 🎒<br>🌐 网页版：<a href="https://cmtk888.github.io/japan-trip/" target="_blank" rel="noopener">cmtk888.github.io/japan-trip</a></footer>
 </div>
+<script>
+document.querySelectorAll('.copybtn').forEach(function(b){b.addEventListener('click',function(){var t=document.getElementById(b.dataset.copy+'-txt').value;
+function ok(){b.textContent='✅ 已复制';setTimeout(function(){b.textContent='📋 复制文字发给司机';},2000);}
+if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){fb();});}else{fb();}
+function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok();}catch(e){alert(t);}document.body.removeChild(ta);}
+});});
+</script>
 </body>
 </html>
