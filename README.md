@@ -21,7 +21,7 @@ Never commit flight order numbers, hotel confirmation numbers, passport details 
 | Dates | Base | Plan |
 |---|---|---|
 | 12/7 Mon | Osaka | Arrive: Hong Kong group (7) via KIX; Fuzhou group (5) via Narita → KIX |
-| 12/8 Tue | Osaka | Kyoto day by private car: Fushimi Inari, Takashimaya lunch, Kiyomizu-dera, Arashiyama, Sagano train to Kameoka |
+| 12/8 Tue | Osaka | Kyoto day by private car (10:00 departure): Fushimi Inari, Takashimaya lunch, Kiyomizu-dera, Arashiyama, back to Osaka by car |
 | 12/9 Wed | Osaka | Kobe beef lunch (Ishida), Umeda shopping, eel dinner (備長) |
 | 12/10 Thu | Hakone | Kuromon Market, Shinkansen Shin-Osaka → Odawara, onsen hotel (dinner included) |
 | 12/11 Fri | Tokyo | Hakone half day (pirate ship, Owakudani, Glass Forest), private car to Shinjuku |
@@ -35,9 +35,6 @@ Never commit flight order numbers, hotel confirmation numbers, passport details 
 - Osaka Airbnb × 2 (12/7–12/10)
 - Hakone hotel, 6 twin rooms with dinner + breakfast (12/10–12/11)
 - Tokyo Airbnb, Shinjuku (12/11–12/13)
-
-### Urgent
-- **Sagano scenic train, 12/8, 16:02 Saga → Kameoka, 12 seats.** Sales open between 11/8 and 11/10 (midnight Japan time = 23:00 Hong Kong the night before). **Check today.**
 
 ### To book
 - Kyoto private car, 12/8 full day
